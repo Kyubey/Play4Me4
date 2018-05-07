@@ -16,8 +16,19 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="plus_button" >+</string>
-    <string name="crea" >Crea</string>
-    <string name="nome_evento" >Nome Evento</string>
+    <string name="plus_button">+</string>
+    <string name="crea">Crea</string>
+    <string name="nome_evento">Nome Evento</string>
+    <string name="data_evento">Data</string>
+    <string name="ora_evento">Ora</string>
+    <string name="luogo_evento">Luogo</string>
     <string name="icona_login" />
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_gestione_bands">GestioneBands</string>
+    <string name="tab_text_1">Accettate</string>
+    <string name="tab_text_2">Proposte</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
