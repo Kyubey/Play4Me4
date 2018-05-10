@@ -6,4 +6,6 @@
     <color name="colorGray">#DDDDDD</color>
     <color name="colorEventButton">#FFC033</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorNegativeButton">#ff2626</color>
+    <color name="colorPositiveButton">#0db904</color>
 </resources>

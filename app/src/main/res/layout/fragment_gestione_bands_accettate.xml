@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GestioneBands$PlaceholderFragment">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/image_band"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/icona_login"
+        android:src="@mipmap/ic_calendar" />
+
+    <TextView
+        android:id="@+id/name_band"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@id/image_band"
+        android:fontFamily="sans-serif"
+        android:lineSpacingExtra="14sp"
+        android:text="Nome Band"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp"
+        android:visibility="visible" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="7dp"
+    android:layout_marginEnd="10dp"
+    android:gravity="end"
+    android:layout_toEndOf="@id/name_band">
+    <Button
+        android:id="@+id/button_band"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="Licenzia"
+        style="?android:textAppearanceMedium"
+        android:textStyle="bold"
+        android:paddingStart="7dp"
+        android:paddingEnd="7dp"
+        android:background="@color/colorNegativeButton"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:layout_gravity="end" />
+</LinearLayout>
+</RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
