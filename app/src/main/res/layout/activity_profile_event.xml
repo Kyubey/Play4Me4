@@ -92,28 +92,11 @@
                 android:textSize="18sp" />
 
         </RelativeLayout>
-        <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark"/>
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_descrive"
-                android:background="@color/colorWhite"/>
-        <Button
-            android:id="@+id/modifica"
-            android:layout_width="match_parent"
-            android:layout_height="23dp"
-            android:background="@color/colorWhite"
-            android:text="Modifica"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat"
-            android:textSize="18sp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@android:color/darker_gray"/>
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -209,7 +192,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="Gestione Band"/>
+            android:text="Proponiti/Ritirati"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
