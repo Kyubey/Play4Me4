@@ -27,6 +27,10 @@
             android:name=".GestioneBands"
             android:label="@string/title_activity_gestione_bands"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".BandsHome"
+            android:label="@string/title_activity_bands_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
