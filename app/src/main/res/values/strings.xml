@@ -42,4 +42,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_caldendar">CaldendarActivity</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
+    <string name="title_activity_user_profile">UserProfile</string>
 </resources>
