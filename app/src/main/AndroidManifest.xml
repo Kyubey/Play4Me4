@@ -56,13 +56,13 @@
 
         <activity
             android:name=".UserProfileActivity"
-            android:label="@string/title_activity_user_profile" />
-        <activity android:name=".AgendaActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="@string/title_activity_user_profile" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter></activity>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+        <activity android:name=".AgendaActivity"></activity>
     </application>
 
 </manifest>
