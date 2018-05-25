@@ -1,7 +1,15 @@
 package com.example.lagun.play4me4;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -11,6 +19,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+
 public class UserProfileActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -18,9 +32,55 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new BitmapFactory();
+
+        Resources res= getResources();
         setContentView(R.layout.activity_user_profile);
         ImageView imageView=(ImageView) findViewById(R.id.image_user);
-        //imageView.setImageDrawable(ObjectFactory.club.get(0).getProPicture());
+
+        //File drawableFile = new     File(getApplicationContext().getFilesDir().getAbsolutePath()+"/ic_calendar.png");
+        imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_calendar, null));
+        {
+            Bitmap bm = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_calendar);
+            File dir = new File(Environment.getExternalStorageDirectory() + File.separator);
+            String filename = "myfile";
+            String fileContents = "Hello world!";
+            FileOutputStream outputStream;
+
+            try {
+                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+                outputStream.write(fileContents.getBytes());
+                outputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            boolean doSave = true;
+            if (!dir.exists()) {
+                doSave = dir.mkdirs();
+            }
+
+            if (doSave) {
+                dir.setWritable(true);
+                dir.setExecutable(true);
+                dir.setReadable(true);
+                ObjectFactory.saveBitmapToFile(dir,"theNameYouWant.png",bm, Bitmap.CompressFormat.PNG,100);
+            }
+            else {
+                Log.e("app","Couldn't create target directory.");
+            }
+        }
+        try {
+            InputStream inputstr;
+            getFilesDir().listFiles();
+            inputstr=new FileInputStream(new File("src/main/res/drawable"));
+            Drawable drawable = Drawable.createFromStream(inputstr, "drawable");
+            imageView.setImageDrawable(drawable);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        //ObjectFactory.initializeClub();
+        //imageView.setImageDrawable(Drawable.createFromPath("R//drawable//ic_calendar");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
