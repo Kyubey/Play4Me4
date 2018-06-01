@@ -23,12 +23,17 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".GestioneBands"
             android:label="@string/title_activity_gestione_bands"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BandsHome"
             android:label="@string/title_activity_bands_home"
@@ -56,13 +61,12 @@
 
         <activity
             android:name=".UserProfileActivity"
-            android:label="@string/title_activity_user_profile" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-        <activity android:name=".AgendaActivity"></activity>
+            android:label="@string/title_activity_user_profile" />
+        <activity android:name=".AgendaActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".ClubHomeActivity" />
+        <activity android:name=".EventCreationActivity" />
+        <activity android:name=".ImageGalleryActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.lagun.play4me4;
+package com.example.lagun.play4me4.model;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;

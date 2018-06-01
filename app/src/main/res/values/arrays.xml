@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="usertype">
+        <item>Tipologia Account</item>
         <item>Band</item>
         <item>Locale</item>
     </string-array>

@@ -1,8 +1,88 @@
 package com.example.lagun.play4me4;
 
-/**
- * Created by lagun on 12/04/2018.
- */
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.View;
+import android.widget.Button;
+import android.widget.SimpleAdapter;
 
-public class ClubHomeActivity {
+import com.example.lagun.play4me4.model.ObjectFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+public class ClubHomeActivity extends AppCompatActivity {
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+
+    private Button mButtonCreatorView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_club_home);
+
+        Adapter adapter = new ClubHomeAdapter(ObjectFactory.getEventi());
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        /*mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        // specify an adapter (see also next example)
+        mAdapter = new ClubHomeAdapter(new String[]{"Proviamo"});
+        mRecyclerView.setAdapter(mAdapter);/
+
+        /*mButtonCreatorView= (Button)findViewById(R.id.event_creation);
+        mButtonCreatorView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ClubHomeActivity.this, EventCreationActivity.class);
+                startActivity(i);
+            }
+        });*/
+
+    }
+
+    private List<SimpleViewModel> generateSimpleList() {
+        List<SimpleViewModel> simpleViewModelList = new ArrayList<>();
+
+        for (int i = 0; i < 100; i++) {
+            simpleViewModelList.add(new SimpleViewModel(String.format(Locale.US, "This is item %d", i)));
+        }
+
+        return simpleViewModelList;
+    }
+
+    public class SimpleViewModel {
+        private String simpleText;
+
+        public SimpleViewModel(final String simpleText) {
+            setSimpleText(simpleText);
+        }
+
+        public String getSimpleText() {
+            return simpleText;
+        }
+
+        public void setSimpleText(final String simpleText) {
+            this.simpleText = simpleText;
+        }
+    }
+    //Paolo@paolo.it
 }

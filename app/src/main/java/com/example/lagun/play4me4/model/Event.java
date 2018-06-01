@@ -1,25 +1,26 @@
-package com.example.lagun.play4me4;
+package com.example.lagun.play4me4.model;
 
+import android.graphics.drawable.Drawable;
 import android.location.Address;
-import android.media.Image;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class Event {
     private String nome;
-    public Date data;
+    public GregorianCalendar data;
     private Address place;
     private String description;
     private User owner;
-    private Image eventPicture;
-    private ArrayList<User> accettati;
-public Event(String nome,Date data,Address place, User owner, Image eventPicture, String description){
+   private Drawable eventPicture;
+    private ArrayList<User> accettati=new ArrayList<User>();
+public Event(String nome,GregorianCalendar data,User owner, String description){
     this.nome=nome;
     this.data=data;
-    this.place=place;
+    //this.place=place;
     this.owner=owner;
-    this.eventPicture=eventPicture;
+    //this.eventPicture=eventPicture;
     this.description=description;
 }
     public String getNome() {
@@ -54,12 +55,20 @@ public Event(String nome,Date data,Address place, User owner, Image eventPicture
         this.owner = owner;
     }
 
-    public Image getEventPicture() {
+    public Drawable getEventPicture() {
         return eventPicture;
     }
 
-    public void setEventPicture(Image eventPicture) {
+    public void setEventPicture(Drawable eventPicture) {
         this.eventPicture = eventPicture;
+    }
+
+    public void accettaNuovo(User nuovo){
+        accettati.add(nuovo);
+    }
+
+    public void rimuoviAccettato(User nuovo){
+        accettati.remove(nuovo);
     }
 
     public ArrayList<User> getAccettati() {

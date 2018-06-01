@@ -12,6 +12,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.example.lagun.play4me4.model.ObjectFactory;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
