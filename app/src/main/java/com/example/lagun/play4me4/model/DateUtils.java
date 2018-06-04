@@ -114,4 +114,37 @@ public class DateUtils {
         }
 
     }
+
+    public static String getMese(String mese){
+        if(mese.startsWith("0"))
+            mese=mese.substring(1);
+        switch(mese){
+            case "1": return "GEN";
+            case "2": return "FEB";
+            case "3": return "MAR";
+            case "4": return "APR";
+            case "5": return "MAG";
+            case "6": return "GIU";
+            case "7": return "LUG";
+            case "8": return "AGO";
+            case "9": return "SET";
+            case "10": return "OTT";
+            case "11": return "NOV";
+        }
+        return "DIC";
+    }
+
+    public static String getGiorno(int giorno){
+
+        switch (giorno){
+            case 1: return "Domenica";
+            case 2: return "Lunedi";
+            case 3: return "Martedi";
+            case 4: return "Mercoledi";
+            case 5: return "Giovedi";
+            case 6: return "Venerdi";
+            case 7: return "Sabato";
+            default: return "error";
+        }
+    }
 }

@@ -4,7 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -347,6 +349,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             if (success) {
                 Intent i = new Intent(LoginActivity.this, ObjectFactory.typeUser(mEmail) ? ClubHomeActivity.class : BandsHome.class);
+                SharedPreferences.Editor edit= PreferenceManager.getDefaultSharedPreferences(LoginActivity.this).edit();
+                edit.putString("userMail", mEmail);
+                edit.commit();
                 startActivity(i);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

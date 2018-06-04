@@ -45,6 +45,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
+                                                <entry key="paddingPercent" value="-10" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -66,8 +67,41 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_info" />
-                                      <entry key="themeColor" value="5ce344" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\lagun\Desktop\Rock.png" />
+                                      <entry key="outputName" value="ic_rock" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="ffffff" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="trimmed" value="true" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="cropped" value="true" />
+                                      <entry key="iconShape" value="HRECT" />
+                                      <entry key="imageAsset" value="C:\Users\lagun\Desktop\Rock.png" />
+                                      <entry key="outputName" value="ic_rock" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -77,7 +111,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

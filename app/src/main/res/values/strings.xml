@@ -28,6 +28,7 @@
     <string name="ora_evento">Ora</string>
     <string name="luogo_evento">Luogo</string>
     <string name="icona_login" />
+    <string name="descrizione_evento">Descrizione</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -50,4 +51,5 @@
     <string name="title_activity_caldendar">CaldendarActivity</string>
     <string name="title_activity_calendar">CalendarActivity</string>
     <string name="title_activity_user_profile">UserProfile</string>
+    <string name="date_event">DateUtils.getGiorno(evento.data.DAY_OF_WEEK)+""+(DateUtils.formatDate(evento.data).split("/")[0])+""+DateUtils.getMese(DateUtils.formatDate(evento.data).split("/")[1])+""+"alle ore "+ "00:00"</string>
 </resources>

@@ -40,7 +40,7 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
         ImageView imageView=(ImageView) findViewById(R.id.image_user);
 
         //File drawableFile = new     File(getApplicationContext().getFilesDir().getAbsolutePath()+"/ic_calendar.png");
-        imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_calendar, null));
+        /*imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_calendar, null));
         {
             Bitmap bm = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_calendar);
             File dir = new File(Environment.getExternalStorageDirectory() + File.separator);
@@ -64,7 +64,7 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
                 dir.setWritable(true);
                 dir.setExecutable(true);
                 dir.setReadable(true);
-                ObjectFactory.saveBitmapToFile(dir,"theNameYouWant.png",bm, Bitmap.CompressFormat.PNG,100);
+                //ObjectFactory.saveBitmapToFile(dir,"theNameYouWant.png",bm, Bitmap.CompressFormat.PNG,100);
             }
             else {
                 Log.e("app","Couldn't create target directory.");
@@ -78,7 +78,7 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
             imageView.setImageDrawable(drawable);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
 
         //ObjectFactory.initializeClub();
         //imageView.setImageDrawable(Drawable.createFromPath("R//drawable//ic_calendar");

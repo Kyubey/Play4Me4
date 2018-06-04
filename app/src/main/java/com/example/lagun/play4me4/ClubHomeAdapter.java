@@ -69,7 +69,7 @@ public class ClubHomeAdapter extends RecyclerView.Adapter<ClubHomeAdapter.ViewHo
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), LoginActivity.class);
+                Intent i = new Intent(view.getContext(), EventPageActivity.class);
                 i.putExtra("numberEvent", position);
                 view.getContext().startActivity(i);
             }

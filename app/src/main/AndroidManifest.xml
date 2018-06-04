@@ -64,9 +64,11 @@
             android:label="@string/title_activity_user_profile" />
         <activity android:name=".AgendaActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".ClubHomeActivity" />
+        <activity android:name=".ClubHomeActivity"
+                  android:theme="@style/AppBaseTheme"/>
         <activity android:name=".EventCreationActivity" />
         <activity android:name=".ImageGalleryActivity"></activity>
+        <activity android:name=".EventPageActivity" />
     </application>
 
 </manifest>

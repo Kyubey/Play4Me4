@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.example.lagun.play4me4.R;
@@ -65,12 +66,12 @@ public class ObjectFactory{
     public static ArrayList<Event> initializeEvents(){
         ArrayList<Event> array=new ArrayList<>();
         {
-            Event Marcheggio=new Event("Marchiamo!", DateUtils.parseDateTime("10/10/2010 - 20:00"),club.get(0),"Un evento di Marcomanon e' Marco");
+            Event Marcheggio=new Event("Marchiamo!", DateUtils.parseDateTime("11/11/2010 - 20:00"),club.get(0),"Un evento di Marcomanon e' Marco");
             Marcheggio.setEventPicture(res.getDrawable(R.drawable.ic_location));
             Marcheggio.accettaNuovo(band.get(0));
             array.add(Marcheggio);
 
-            Event Panini=new Event("PANINII!", DateUtils.parseDateTime("10/10/2018 - 22:00"),club.get(0),"Che buoni");
+            Event Panini=new Event("PANINII!", DateUtils.parseDateTime("05/07/2019 - 22:00"),club.get(0),"Che buoni");
             Panini.setEventPicture(res.getDrawable(R.drawable.ic_menu_camera));
             array.add(Panini);
             //Event Marcheggio=new Event("Marchiamo!");
@@ -79,7 +80,7 @@ public class ObjectFactory{
 
     }
 
-    public static boolean saveBitmapToFile(File dir, String fileName, Bitmap bm,
+    /*public static boolean saveBitmapToFile(File dir, String fileName, Bitmap bm,
                              Bitmap.CompressFormat format, int quality) {
 
         File imageFile = new File(dir,fileName);
@@ -105,7 +106,7 @@ public class ObjectFactory{
             }
         }
         return false;
-    }
+    }*/
 
     public static ArrayList<User> getClub() {
         return club;
@@ -137,11 +138,32 @@ public class ObjectFactory{
         return false;
     }
 
+    public static void createEvent(Event nuovo){
+        eventi.add(nuovo);
+    }
+
     public static ArrayList<Event> getEventi(){
         return eventi;
     }
 
     public static ArrayList<User> getBand(){
         return band;
+    }
+
+    public static User getFromEmail(String email){
+        for(User locale:club){
+            if(locale.getMail().toLowerCase().equals(email.toLowerCase()))
+                return locale;
+        }
+        for(User gruppo:band){
+            if(gruppo.getMail().toLowerCase().equals(email.toLowerCase()))
+                return gruppo;
+        }
+        throw new UnsupportedOperationException("Errore bizzarro");
+
+    }
+
+    public static User getLoggedUser(Context context) {
+        return ObjectFactory.getFromEmail(PreferenceManager.getDefaultSharedPreferences(context).getString("userMail",""));
     }
 }

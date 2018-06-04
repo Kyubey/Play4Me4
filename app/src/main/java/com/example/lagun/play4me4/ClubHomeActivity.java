@@ -1,16 +1,20 @@
 package com.example.lagun.play4me4;
 
+import android.content.Context;
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
 
 import com.example.lagun.play4me4.model.ObjectFactory;
+import com.example.lagun.play4me4.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +25,19 @@ public class ClubHomeActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private User utente;
 
     private Button mButtonCreatorView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_club_home);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setSubtitle("Impariamo ad usare la Toolbar");
+        getSupportActionBar().setTitle("Club Home");
+        utente=ObjectFactory.getLoggedUser(getApplicationContext());
+
 
         Adapter adapter = new ClubHomeAdapter(ObjectFactory.getEventi());
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);
@@ -46,18 +57,20 @@ public class ClubHomeActivity extends AppCompatActivity {
 
         // specify an adapter (see also next example)
         mAdapter = new ClubHomeAdapter(new String[]{"Proviamo"});
-        mRecyclerView.setAdapter(mAdapter);/
+        mRecyclerView.setAdapter(mAdapter);/*/
 
-        /*mButtonCreatorView= (Button)findViewById(R.id.event_creation);
+        mButtonCreatorView= (Button)findViewById(R.id.event_creation);
         mButtonCreatorView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ClubHomeActivity.this, EventCreationActivity.class);
                 startActivity(i);
             }
-        });*/
+        });
 
     }
+
+
 
     private List<SimpleViewModel> generateSimpleList() {
         List<SimpleViewModel> simpleViewModelList = new ArrayList<>();
