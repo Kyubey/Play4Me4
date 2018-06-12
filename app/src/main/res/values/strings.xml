@@ -27,6 +27,7 @@
     <string name="data_evento">Data</string>
     <string name="ora_evento">Ora</string>
     <string name="luogo_evento">Luogo</string>
+    <string name="luogo_evento_creation">Via Taldeitali 0 Citta</string>
     <string name="icona_login" />
     <string name="descrizione_evento">Descrizione</string>
 

@@ -40,7 +40,7 @@ public class ObjectFactory{
         //Uri uril=ResourceUtils.getDrawableUri("R.drawable.ic_calendar");
         ArrayList<User> array=new ArrayList<>();
         {
-            User Paolo=new User("Paolo","@","Panino",true);
+            User Paolo=new User("Paolo","@","p",true);
             Paolo.setDescription("Ciao");
             Paolo.setInfo("Miliardario");
             Paolo.setPhoneNumber("2345566");
@@ -58,7 +58,15 @@ public class ObjectFactory{
             Marco.setDescription("Bella");
             Marco.setInfo("Rocker");
             Marco.setPhoneNumber("63474574");
+            Marco.setProPicture(res.getDrawable(R.drawable.ic_phone));
             array.add(Marco);
+
+            User Fabio=new User("Fabietto","fabio@fabb.it","Brobro",false);
+            Fabio.setDescription("Yother");
+            Fabio.setInfo("Your' mon");
+            Fabio.setPhoneNumber("4324429");
+            Fabio.setProPicture(res.getDrawable(R.drawable.ic_menu_camera));
+            array.add(Fabio);
         }
         return array;
     }
@@ -68,11 +76,15 @@ public class ObjectFactory{
         {
             Event Marcheggio=new Event("Marchiamo!", DateUtils.parseDateTime("11/11/2010 - 20:00"),club.get(0),"Un evento di Marcomanon e' Marco");
             Marcheggio.setEventPicture(res.getDrawable(R.drawable.ic_location));
+            Marcheggio.setStringPlace("Via Ospedale 14 Cagliari");
             Marcheggio.accettaNuovo(band.get(0));
+            Marcheggio.accettaNuovo(band.get(1));
             array.add(Marcheggio);
 
-            Event Panini=new Event("PANINII!", DateUtils.parseDateTime("05/07/2019 - 22:00"),club.get(0),"Che buoni");
+            Event Panini=new Event("PANINII!", DateUtils.parseDateTime("04/06/2018 - 22:00"),club.get(0),"Che buoni");
             Panini.setEventPicture(res.getDrawable(R.drawable.ic_menu_camera));
+            Panini.setStringPlace("Via Cesare Serra 1 Quartucciu");
+            Panini.proponiNuovo(band.get(0));
             array.add(Panini);
             //Event Marcheggio=new Event("Marchiamo!");
         }

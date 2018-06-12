@@ -103,6 +103,7 @@
             android:layout_width="match_parent"
             android:orientation="vertical">
             <ImageButton
+                android:id="@+id/modifica_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_descrive"

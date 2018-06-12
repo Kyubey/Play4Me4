@@ -134,6 +134,26 @@ public class DateUtils {
         return "DIC";
     }
 
+
+    public static String getMese(String mese, int intero){
+        if(mese.startsWith("0"))
+            mese=mese.substring(1);
+        switch(mese){
+            case "1": return "Gennaio";
+            case "2": return "Febbraio";
+            case "3": return "Marzo";
+            case "4": return "Aprile";
+            case "5": return "Maggio";
+            case "6": return "Giugno";
+            case "7": return "Luglio";
+            case "8": return "Agosto";
+            case "9": return "Settembre";
+            case "10": return "Ottobre";
+            case "11": return "Novembre";
+        }
+        return "Dicembre";
+    }
+
     public static String getGiorno(int giorno){
 
         switch (giorno){

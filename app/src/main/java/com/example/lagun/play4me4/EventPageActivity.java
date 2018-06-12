@@ -1,8 +1,15 @@
 package com.example.lagun.play4me4;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -11,8 +18,14 @@ import android.widget.TextView;
 import com.example.lagun.play4me4.model.DateUtils;
 import com.example.lagun.play4me4.model.Event;
 import com.example.lagun.play4me4.model.ObjectFactory;
+import com.google.android.gms.maps.model.LatLng;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Locale;
 
 public class EventPageActivity extends AppCompatActivity {
     private ImageView mImage;
@@ -27,6 +40,11 @@ public class EventPageActivity extends AppCompatActivity {
     private RecyclerView mBands;
     private Button mGestioneBands;
     private Event evento;
+    private LatLng coordinates;
+    //private Geocoder coder= new Geocoder(context);
+
+    Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -36,7 +54,6 @@ public class EventPageActivity extends AppCompatActivity {
         mImage= findViewById(R.id.image_event);
         mMese= findViewById(R.id.data_month);
         mGiorno= findViewById(R.id.data_day);
-        mModifica= findViewById(R.id.modifica);
         mData= findViewById(R.id.data);
         mLuogo= findViewById(R.id.posto);
         mDescrizione= findViewById(R.id.description);
@@ -45,12 +62,56 @@ public class EventPageActivity extends AppCompatActivity {
         mBands= findViewById(R.id.bands_partecipanti);
         mGestioneBands= findViewById(R.id.gestione_bands);
 
+
         mImage.setImageDrawable(evento.getEventPicture());
         mNome.setText(evento.getNome());
-        mMese.setText(DateUtils.getMese(DateUtils.formatDate(evento.data).split("/")[1]));
-        mData.setText(DateUtils.getGiorno(evento.data.get(GregorianCalendar.DAY_OF_WEEK))+" "+(DateUtils.formatDate(evento.data).split("/")[0])+" "+DateUtils.getMese(DateUtils.formatDate(evento.data).split("/")[1])+" alle ore "+ "00:00");
-        mGiorno.setText(DateUtils.formatDate(evento.data).split("/")[0]);
+        mMese.setText(DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()).split("/")[1]));
+        mData.setText(DateUtils.getGiorno(evento.data.get(GregorianCalendar.DAY_OF_WEEK))+" "+(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()).split("/")[0], 1)+" "+" alle ore "+ DateUtils.formatTime(evento.data));
+        mGiorno.setText(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()).split("/")[0]);
+        if(evento.getPlace()!=null) {
+            mLuogo.setText(evento.getPlace().getThoroughfare() + " " + evento.getPlace().getFeatureName()+" " + evento.getPlace().getLocality());
+        }else{
+            mLuogo.setText(evento.getStringPlace());
+        }
+        mDescrizione.setText(evento.getDescription());
+        mOwner.setText(evento.getOwner().getName());
+
+        findViewById(R.id.modifica_image).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attemptModify();
+            }
+        });
+        findViewById(R.id.modifica_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attemptModify();
+            }
+        });
+        mGestioneBands.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                attemptGestioneBands();
+            }
+        });
+
+        RecyclerView.Adapter adapter = new EventPageAdapter(evento.getAccettati());
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.bands_partecipanti);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setAdapter(adapter);
+
+    }
 
 
+    protected void attemptModify(){
+        Intent i = new Intent(EventPageActivity.this, EventCreationActivity.class);
+        i.putExtra("numberEvent", getIntent().getIntExtra("numberEvent", -1));
+        startActivity(i);
+    }
+    protected void attemptGestioneBands(){
+        Intent i = new Intent(EventPageActivity.this, GestioneBands.class);
+        i.putExtra("numberEvent", getIntent().getIntExtra("numberEvent", -1));
+        startActivity(i);
     }
 }
