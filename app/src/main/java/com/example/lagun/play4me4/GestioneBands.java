@@ -1,5 +1,7 @@
 package com.example.lagun.play4me4;
 
+
+import android.app.FragmentTransaction;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +20,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+
+import com.example.lagun.play4me4.model.ObjectFactory;
 
 public class GestioneBands extends AppCompatActivity {
 
@@ -50,11 +54,19 @@ public class GestioneBands extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+        mViewPager.setOffscreenPageLimit(0);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout){
+
+
+        });
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager){
+
+        });
+
+
 
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +78,8 @@ public class GestioneBands extends AppCompatActivity {
         });*/
 
     }
+
+
 
 
     @Override
@@ -97,6 +111,9 @@ public class GestioneBands extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+        GestioneAccettateAdapter adapter = new GestioneAccettateAdapter(ObjectFactory.getEventi().get(getIntent().getIntExtra("numberEvent",-1)).getAccettati(),
+                getIntent().getIntExtra("numberEvent",-1));
+
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
@@ -105,11 +122,9 @@ public class GestioneBands extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
-                    GestioneBandTab1Accettate tab1= new GestioneBandTab1Accettate();
-                    return tab1;
+                    return new GestioneBandTab1Accettate(adapter);
                 case 1:
-                    GestioneBandTab2Proposte tab2= new GestioneBandTab2Proposte();
-                    return tab2;
+                    return new GestioneBandTab2Proposte(GestioneBandTab1Accettate.adapter);
                 default:
                         return null;
             }
@@ -128,6 +143,7 @@ public class GestioneBands extends AppCompatActivity {
                 case 1:
                     return "Proposte";
             }
+
             return null;
         }
     }

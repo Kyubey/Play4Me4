@@ -101,6 +101,15 @@ public class EventPageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
         recyclerView.setAdapter(adapter);
 
+
+
+    }
+
+    @Override
+    public void onBackPressed(){
+
+        super.onBackPressed();
+        finish();
     }
 
 

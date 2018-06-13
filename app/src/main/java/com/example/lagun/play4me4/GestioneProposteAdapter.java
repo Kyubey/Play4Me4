@@ -26,6 +26,7 @@ import java.util.Map;
 public class GestioneProposteAdapter extends RecyclerView.Adapter<GestioneProposteAdapter.ViewHolder> {
     private ArrayList<User> mDataset;
     private Pair<Integer,Event> evento;
+    public GestioneAccettateAdapter adapterAcc;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -48,9 +49,11 @@ public class GestioneProposteAdapter extends RecyclerView.Adapter<GestionePropos
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public  GestioneProposteAdapter(ArrayList<User> myDataset,int numberEvent) {
+    public  GestioneProposteAdapter(ArrayList<User> myDataset,int numberEvent,
+                                    GestioneAccettateAdapter adapterAcc) {
         mDataset = myDataset;
         evento = Pair.create(numberEvent, ObjectFactory.getEventi().get(numberEvent));
+        this.adapterAcc=adapterAcc;
     }
 
     // Create new views (invoked by the layout manager)
@@ -88,6 +91,7 @@ public class GestioneProposteAdapter extends RecyclerView.Adapter<GestionePropos
                 evento.second.rimuoviProposto(mDataset.get(position));
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
+                adapterAcc.notifyDataSetChanged();
             }
         });
     }

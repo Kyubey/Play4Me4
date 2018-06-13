@@ -39,11 +39,11 @@ public class ClubHomeActivity extends AppCompatActivity {
         utente=ObjectFactory.getLoggedUser(getApplicationContext());
 
 
-        Adapter adapter = new ClubHomeAdapter(ObjectFactory.getTuoiEventi(utente));
+        mAdapter = new ClubHomeAdapter(ObjectFactory.getTuoiEventi(utente));
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(mAdapter);
 
         /*mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
 
@@ -68,6 +68,13 @@ public class ClubHomeActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume(){
+        if(mAdapter!=null)
+            mAdapter.notifyDataSetChanged();
+        super.onResume();
     }
 
 
