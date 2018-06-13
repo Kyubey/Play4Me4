@@ -12,8 +12,8 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/image_band"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/size_image_resume"
+            android:layout_height="@dimen/size_image_resume"
             android:layout_alignParentStart="true"
             android:layout_marginTop="5dp"
             android:contentDescription="@string/icona_login"
