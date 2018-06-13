@@ -42,7 +42,7 @@
             android:gravity="end"
             android:layout_toEndOf="@id/name_band">
             <Button
-                android:id="@+id/button_band"
+                android:id="@+id/button_licenzia"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:text="Licenzia"

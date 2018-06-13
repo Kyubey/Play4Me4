@@ -18,7 +18,7 @@ public class GestioneBandTab1Accettate extends Fragment {
                              Bundle savedInstanceState) {
         Event event=ObjectFactory.getEventi().get(getActivity().getIntent().getIntExtra("numberEvent",-1));
         View rootView = inflater.inflate(R.layout.fragment_gestione_bands_tab1_accettate_layout, container, false);
-        RecyclerView.Adapter adapter = new GestioneAccettateAdapter(event.getAccettati());
+        RecyclerView.Adapter adapter = new GestioneAccettateAdapter(event.getAccettati(),getActivity().getIntent().getIntExtra("numberEvent",-1));
 
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.content_accettate);
         recyclerView.setHasFixedSize(true);

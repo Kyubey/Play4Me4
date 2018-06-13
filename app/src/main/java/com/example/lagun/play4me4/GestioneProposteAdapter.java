@@ -88,7 +88,6 @@ public class GestioneProposteAdapter extends RecyclerView.Adapter<GestionePropos
                 evento.second.rimuoviProposto(mDataset.get(position));
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
-
             }
         });
     }
