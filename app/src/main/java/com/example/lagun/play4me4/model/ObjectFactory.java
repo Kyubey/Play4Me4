@@ -85,6 +85,7 @@ public class ObjectFactory{
             Panini.setEventPicture(res.getDrawable(R.drawable.ic_menu_camera));
             Panini.setStringPlace("Via Cesare Serra 1 Quartucciu");
             Panini.proponiNuovo(band.get(0));
+            Panini.proponiNuovo(band.get(1));
             array.add(Panini);
             //Event Marcheggio=new Event("Marchiamo!");
         }
