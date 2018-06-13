@@ -16,9 +16,12 @@ import com.example.lagun.play4me4.model.DateUtils;
 import com.example.lagun.play4me4.model.Event;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ClubHomeAdapter extends RecyclerView.Adapter<ClubHomeAdapter.ViewHolder> {
-    private ArrayList<Event> mDataset;
+    private HashMap<Integer,Map.Entry<Integer,Event>> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -40,8 +43,14 @@ public class ClubHomeAdapter extends RecyclerView.Adapter<ClubHomeAdapter.ViewHo
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ClubHomeAdapter(ArrayList<Event> myDataset) {
-        mDataset = myDataset;
+    public ClubHomeAdapter(HashMap<Integer,Event> myDataset) {
+        mDataset=new HashMap<>();
+        Iterator<Map.Entry<Integer, Event>> iterator = myDataset.entrySet().iterator();
+        int i=0;
+        while(iterator.hasNext()){
+            mDataset.put(i++,iterator.next());
+        }
+        i+=0;
     }
 
     // Create new views (invoked by the layout manager)
@@ -61,16 +70,16 @@ public class ClubHomeAdapter extends RecyclerView.Adapter<ClubHomeAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset.get(position).getNome());
-        holder.mDateView.setText(DateUtils.formatDateExtended(mDataset.get(position).data));
-        holder.mImage.setImageDrawable(mDataset.get(position).getEventPicture());
-        holder.mAcceptView.setText("Band partecipanti: "+mDataset.get(position).getAccettati().size());
+        holder.mTextView.setText(mDataset.get(position).getValue().getNome());
+        holder.mDateView.setText(DateUtils.formatDateExtended(mDataset.get(position).getValue().data));
+        holder.mImage.setImageDrawable(mDataset.get(position).getValue().getEventPicture());
+        holder.mAcceptView.setText("Band partecipanti: "+mDataset.get(position).getValue().getAccettati().size());
         holder.everything.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), EventPageActivity.class);
-                i.putExtra("numberEvent", position);
+                i.putExtra("numberEvent", mDataset.get(position).getKey());
                 view.getContext().startActivity(i);
             }
         });

@@ -18,7 +18,7 @@ public class GestioneBandTab2Proposte extends Fragment {
                              Bundle savedInstanceState) {
         Event event=ObjectFactory.getEventi().get(getActivity().getIntent().getIntExtra("numberEvent",-1));
         View rootView = inflater.inflate(R.layout.fragment_gestione_bands_tab2_proposte_layout, container, false);
-        RecyclerView.Adapter adapter = new GestioneProposteAdapter(event.getProposti());
+        RecyclerView.Adapter adapter = new GestioneProposteAdapter(event.getProposti(),getActivity().getIntent().getIntExtra("numberEvent",-1));
 
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.content_proposte);
         recyclerView.setHasFixedSize(true);

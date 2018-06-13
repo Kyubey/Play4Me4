@@ -14,11 +14,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class ObjectFactory{
     public static ArrayList<User> club;
     public static ArrayList<User> band;
-    public static ArrayList<Event> eventi;
+    public static HashMap<Integer,Event> eventi;
+    public static int totalEvents;
 
     private static Resources res;
 
@@ -31,6 +35,7 @@ public class ObjectFactory{
     }
     public static void initializeThis(Resources current){
         res = current;
+        totalEvents=0;
         club=initializeClub();
         band=initializeBand();
         eventi=initializeEvents();
@@ -71,22 +76,24 @@ public class ObjectFactory{
         return array;
     }
 
-    public static ArrayList<Event> initializeEvents(){
-        ArrayList<Event> array=new ArrayList<>();
+    public static HashMap<Integer,Event> initializeEvents(){
+        HashMap<Integer,Event> array=new HashMap<>();
         {
             Event Marcheggio=new Event("Marchiamo!", DateUtils.parseDateTime("11/11/2010 - 20:00"),club.get(0),"Un evento di Marcomanon e' Marco");
             Marcheggio.setEventPicture(res.getDrawable(R.drawable.ic_location));
             Marcheggio.setStringPlace("Via Ospedale 14 Cagliari");
             Marcheggio.accettaNuovo(band.get(0));
             Marcheggio.accettaNuovo(band.get(1));
-            array.add(Marcheggio);
+            array.put(totalEvents,Marcheggio);
+            totalEvents++;
 
             Event Panini=new Event("PANINII!", DateUtils.parseDateTime("04/06/2018 - 22:00"),club.get(0),"Che buoni");
             Panini.setEventPicture(res.getDrawable(R.drawable.ic_menu_camera));
             Panini.setStringPlace("Via Cesare Serra 1 Quartucciu");
             Panini.proponiNuovo(band.get(0));
             Panini.proponiNuovo(band.get(1));
-            array.add(Panini);
+            array.put(totalEvents,Panini);
+            totalEvents++;
             //Event Marcheggio=new Event("Marchiamo!");
         }
         return array;
@@ -152,11 +159,65 @@ public class ObjectFactory{
     }
 
     public static void createEvent(Event nuovo){
-        eventi.add(nuovo);
+        eventi.put(totalEvents,nuovo);
+        totalEvents++;
     }
 
-    public static ArrayList<Event> getEventi(){
+    public static void deleteEvent(int numberEvent){
+        eventi.remove(numberEvent);
+    };
+
+    public static HashMap<Integer,Event> getEventi(){
         return eventi;
+    }
+
+    public static void changeEvent(int numberEvent,Event evento){
+        deleteEvent(numberEvent);
+        eventi.put(numberEvent,evento);
+    }
+
+    public static HashMap<Integer,Event> getTuoiEventi(User owner){
+        Iterator<Map.Entry<Integer, Event>> iterator = eventi.entrySet().iterator();
+        HashMap<Integer,Event> tuoi=new HashMap<>();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Event> next = iterator.next();
+            if(next.getValue().getOwner().equals(owner))
+                tuoi.put(next.getKey(),next.getValue());
+        }
+        return tuoi;
+    }
+
+    public static HashMap<Integer,Event> getEventiProposti(User proposti){
+        Iterator<Map.Entry<Integer, Event>> iterator = eventi.entrySet().iterator();
+        HashMap<Integer,Event> tuoi=new HashMap<>();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Event> next = iterator.next();
+            if(next.getValue().getProposti().contains(proposti))
+                tuoi.put(next.getKey(),next.getValue());
+        }
+        return tuoi;
+    }
+
+    public static HashMap<Integer,Event> getEventiAccettati(User accettati){
+        Iterator<Map.Entry<Integer, Event>> iterator = eventi.entrySet().iterator();
+        HashMap<Integer,Event> tuoi=new HashMap<>();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Event> next = iterator.next();
+            if(next.getValue().getAccettati().contains(accettati))
+                tuoi.put(next.getKey(),next.getValue());
+        }
+        return tuoi;
+    }
+
+    public static HashMap<Integer,Event> getEventiNuovi(User band){
+        Iterator<Map.Entry<Integer, Event>> iterator = eventi.entrySet().iterator();
+        HashMap<Integer,Event> tuoi=new HashMap<>();
+        while(iterator.hasNext()){
+            Map.Entry<Integer, Event> next = iterator.next();
+            if((!next.getValue().getProposti().contains(band)) && (!next.getValue().getAccettati().contains(band)))
+                tuoi.put(next.getKey(),next.getValue());
+        }
+        return tuoi;
     }
 
     public static ArrayList<User> getBand(){

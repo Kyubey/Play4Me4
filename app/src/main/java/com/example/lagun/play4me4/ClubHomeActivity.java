@@ -39,7 +39,7 @@ public class ClubHomeActivity extends AppCompatActivity {
         utente=ObjectFactory.getLoggedUser(getApplicationContext());
 
 
-        Adapter adapter = new ClubHomeAdapter(ObjectFactory.getEventi());
+        Adapter adapter = new ClubHomeAdapter(ObjectFactory.getTuoiEventi(utente));
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
