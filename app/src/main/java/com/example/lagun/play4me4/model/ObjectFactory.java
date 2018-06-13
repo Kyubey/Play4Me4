@@ -66,7 +66,7 @@ public class ObjectFactory{
             Marco.setProPicture(res.getDrawable(R.drawable.ic_phone));
             array.add(Marco);
 
-            User Fabio=new User("Fabietto","fabio@fabb.it","Brobro",false);
+            User Fabio=new User("Fabietto","f@","b",false);
             Fabio.setDescription("Yother");
             Fabio.setInfo("Your' mon");
             Fabio.setPhoneNumber("4324429");
