@@ -1,6 +1,7 @@
 package com.example.lagun.play4me4;
 
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ public class BandsHomeTab2ProposteAdapter extends RecyclerView.Adapter<BandsHome
         public TextView mDate;
         public TextView mOrganizer;
         public TextView mPlace;
+        public View mProp;
 
         public ViewHolder(View v) {
             super(v);
@@ -38,6 +40,7 @@ public class BandsHomeTab2ProposteAdapter extends RecyclerView.Adapter<BandsHome
             mDate=v.findViewById(R.id.date_event);
             mOrganizer=v.findViewById(R.id.organizer_event);
             mPlace=v.findViewById(R.id.place_event);
+            mProp=v.findViewById(R.id.prop);
             //mImage=v.findViewById(R.id.bands_part);
         }
     }
@@ -85,11 +88,21 @@ public class BandsHomeTab2ProposteAdapter extends RecyclerView.Adapter<BandsHome
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
+        if(numberProposes>position)
+            holder.mProp.setBackgroundColor(holder.mProp.getResources().getColor(R.color.colorGray));
         holder.mImage.setImageDrawable(mDataset.get(position).getValue().getEventPicture());
         holder.mName.setText(mDataset.get(position).getValue().getNome());
         holder.mPlace.setText(mDataset.get(position).getValue().getStringPlace());
         holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[0])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[1], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getValue().getData()));
         holder.mOrganizer.setText(mDataset.get(position).getValue().getOwner().getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(view.getContext(),EventPageActivityBand.class);
+                i.putExtra("numberEvent",mDataset.get(position).getKey());
+                view.getContext().startActivity(i);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -84,8 +84,9 @@ public class EventPageActivityBand extends AppCompatActivity {
         final int negColor = this.getResources().getColor(R.color.colorNegativeButton);
         final int posColor = this.getResources().getColor(R.color.colorPrimary);
 
+
         if(!ObjectFactory.getEventiNuovi(utente).containsValue(evento)){
-            mButton.setText("Ritira proposta");
+            mButton.setText("Ritirati");
             mButton.setBackgroundColor(negColor);
         }
 
@@ -93,18 +94,18 @@ public class EventPageActivityBand extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(ObjectFactory.getEventiNuovi(utente).containsValue(evento)){
-                    mButton.setText("Ritira proposta");
+                    mButton.setText("Ritirati");
                     mButton.setBackgroundColor(negColor);
                     ObjectFactory.getEventi().get(numEvent).proponiNuovo(utente,numEvent);
 
                 }
                 else{
                     if(ObjectFactory.getEventiAccettati(utente).containsValue(evento))
-                    ObjectFactory.getEventi().get(numEvent).rimuoviDaAccettati(utente,numEvent);
-                    ObjectFactory.getEventi().get(numEvent).rimuoviProposto(utente);
+                        ObjectFactory.getEventi().get(numEvent).rimuoviDaAccettati(utente,numEvent);
+                    else
+                        ObjectFactory.getEventi().get(numEvent).rimuoviProposto(utente);
                     mButton.setText("Proponiti");
                     mButton.setBackgroundColor(posColor);
-
                 }
             }
         });
