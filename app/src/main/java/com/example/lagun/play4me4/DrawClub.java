@@ -25,6 +25,7 @@ public class DrawClub extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     User utente;
     private RecyclerView.Adapter mAdapter;
+    private Button mButtonCreatorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,15 @@ public class DrawClub extends AppCompatActivity
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
+
+        mButtonCreatorView= (Button)findViewById(R.id.event_creation);
+        mButtonCreatorView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DrawClub.this, EventCreationActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     @Override
