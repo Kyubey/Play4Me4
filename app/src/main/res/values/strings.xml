@@ -56,4 +56,5 @@
     <string name="date_event">DateUtils.getGiorno(evento.data.DAY_OF_WEEK)+""+(DateUtils.formatDate(evento.data).split("/")[0])+""+DateUtils.getMese(DateUtils.formatDate(evento.data).split("/")[1])+""+"alle ore "+ "00:00"</string>
     <string name="title_activity_navigation">Navigation</string>
     <string name="title_activity_draw_club">DrawClub</string>
+    <string name="title_activity_draw_bands">DrawBands</string>
 </resources>

@@ -81,7 +81,7 @@ public class Notification extends AppCompatActivity {
         if(utente.isClub())
             startActivity(new Intent(Notification.this,DrawClub.class));
         else
-            startActivity(new Intent(Notification.this,BandsHome.class));
+            startActivity(new Intent(Notification.this,DrawBands.class));
 
     }
     //Paolo@paolo.it

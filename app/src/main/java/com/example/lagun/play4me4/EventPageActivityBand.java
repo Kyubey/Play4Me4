@@ -113,7 +113,7 @@ public class EventPageActivityBand extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        startActivity(new Intent(EventPageActivityBand.this,BandsHome.class));
+        startActivity(new Intent(EventPageActivityBand.this,DrawBands.class));
         finish();
     }
 

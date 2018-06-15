@@ -348,10 +348,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Intent i = new Intent(LoginActivity.this, ObjectFactory.typeUser(mEmail) ? DrawClub.class : BandsHome.class);
+                Intent i = new Intent(LoginActivity.this, ObjectFactory.typeUser(mEmail) ? DrawClub.class : DrawBands.class);
                 SharedPreferences.Editor edit= PreferenceManager.getDefaultSharedPreferences(LoginActivity.this).edit();
                 edit.putString("userMail", mEmail);
-                edit.commit();
+                edit.apply();
                 startActivity(i);
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
