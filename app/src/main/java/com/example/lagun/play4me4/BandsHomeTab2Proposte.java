@@ -18,7 +18,7 @@ public class BandsHomeTab2Proposte extends Fragment {
                              Bundle savedInstanceState) {
         User band=ObjectFactory.getLoggedUser(getContext());
         View rootView = inflater.inflate(R.layout.fragment_bands_home_proposte_layout, container, false);
-        RecyclerView.Adapter adapter = new BandsHomeTab2ProposteAdapter(ObjectFactory.getEventiProposti(band));
+        RecyclerView.Adapter adapter = new BandsHomeTab2ProposteAdapter(ObjectFactory.getEventiProposti(band), ObjectFactory.getEventiNuovi(band));
 
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.content_ingaggi);
         recyclerView.setHasFixedSize(true);

@@ -82,7 +82,7 @@ public class ObjectFactory{
             Event Marcheggio=new Event("Marchiamo!", DateUtils.parseDateTime("11/11/2010 - 20:00"),club.get(0),"Un evento di Marcomanon e' Marco");
             Marcheggio.setEventPicture(res.getDrawable(R.drawable.ic_location));
             Marcheggio.setStringPlace("Via Ospedale 14 Cagliari");
-            Marcheggio.accettaNuovo(band.get(0));
+            Marcheggio.proponiNuovo(band.get(0));
             Marcheggio.accettaNuovo(band.get(1));
             array.put(totalEvents,Marcheggio);
             totalEvents++;
@@ -90,11 +90,17 @@ public class ObjectFactory{
             Event Panini=new Event("PANINII!", DateUtils.parseDateTime("04/06/2018 - 22:00"),club.get(0),"Che buoni");
             Panini.setEventPicture(res.getDrawable(R.drawable.ic_menu_camera));
             Panini.setStringPlace("Via Cesare Serra 1 Quartucciu");
-            Panini.proponiNuovo(band.get(0));
+            Panini.accettaNuovo(band.get(0));
             Panini.proponiNuovo(band.get(1));
             array.put(totalEvents,Panini);
             totalEvents++;
             //Event Marcheggio=new Event("Marchiamo!");
+
+            Event Banane=new Event("Vendo Banane!", DateUtils.parseDateTime("07/08/2018 - 16:00"),club.get(0),"Ohibo quante Banane");
+            Banane.setEventPicture(res.getDrawable(R.drawable.ic_descrive));
+            Banane.setStringPlace("Via Roma 3 Cagliari");
+            array.put(totalEvents,Banane);
+            totalEvents++;
         }
         return array;
 

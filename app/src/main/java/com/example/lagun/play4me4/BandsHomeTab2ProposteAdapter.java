@@ -18,6 +18,7 @@ import java.util.Map;
 
 public class BandsHomeTab2ProposteAdapter extends RecyclerView.Adapter<BandsHomeTab2ProposteAdapter.ViewHolder> {
     private HashMap<Integer,Map.Entry<Integer, Event>> mDataset;
+    private int numberProposes=0;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -43,13 +44,28 @@ public class BandsHomeTab2ProposteAdapter extends RecyclerView.Adapter<BandsHome
 
     // Provide a suitable constructor (depends on the kind of dataset)
 
-    public  BandsHomeTab2ProposteAdapter(HashMap<Integer,Event> myDataset)  {
+    public  BandsHomeTab2ProposteAdapter(HashMap<Integer,Event> myDataset, HashMap<Integer,Event> myNewEventsDataset)  {
         mDataset=new HashMap<>();
         Iterator<Map.Entry<Integer, Event>> iterator = myDataset.entrySet().iterator();
+        Iterator<Map.Entry<Integer, Event>> iteratorNewEvents = myNewEventsDataset.entrySet().iterator();
+        boolean checkIfPresented=false;
+        numberProposes=0;
         int i=0;
         while(iterator.hasNext()) {
             mDataset.put(i++, iterator.next());
+            numberProposes=i;
         }
+        while(iteratorNewEvents.hasNext()){
+            mDataset.put(i++, iteratorNewEvents.next());
+        }
+    }
+
+
+    static <T, S> boolean equals(Iterator<T> a, Iterator<S> b) {
+            if (!a.next().equals(b.next())) {
+                return false;
+            }
+        return true;
     }
 
     // Create new views (invoked by the layout manager)
@@ -72,7 +88,7 @@ public class BandsHomeTab2ProposteAdapter extends RecyclerView.Adapter<BandsHome
         holder.mImage.setImageDrawable(mDataset.get(position).getValue().getEventPicture());
         holder.mName.setText(mDataset.get(position).getValue().getNome());
         holder.mPlace.setText(mDataset.get(position).getValue().getStringPlace());
-        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().data.getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().data.getTime()).split("/")[0], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getValue().data));
+        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().data.getTime()).split("/")[0])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().data.getTime()).split("/")[1], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getValue().data));
         holder.mOrganizer.setText(mDataset.get(position).getValue().getOwner().getName());
     }
 
