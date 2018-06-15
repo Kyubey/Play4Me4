@@ -14,6 +14,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -245,5 +247,16 @@ public class ObjectFactory{
 
     public static User getLoggedUser(Context context) {
         return ObjectFactory.getFromEmail(PreferenceManager.getDefaultSharedPreferences(context).getString("userMail",""));
+    }
+
+    public static ArrayList<Event> sort(ArrayList<Event> lista){
+        ArrayList<Event> listIt = new ArrayList<>();
+        listIt.addAll(lista);
+        Collections.sort(lista,new Comparator<Event>(){
+            public int compare(Event s1,Event s2){
+                Long diff=s1.getData().getTimeInMillis()-s2.getData().getTimeInMillis();
+                return diff.intValue();
+            }});
+        return lista;
     }
 }
