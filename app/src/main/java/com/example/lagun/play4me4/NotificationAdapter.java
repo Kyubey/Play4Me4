@@ -80,7 +80,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset.get(position).getContenuto());
-        holder.mImage.setImageDrawable(ObjectFactory.getEventi().get(mDataset.get(position).getNumberEvent()).getEventPicture() );
+        if(mDataset.get(position).getNumberEvent()>-1)
+            holder.mImage.setImageDrawable(ObjectFactory.getEventi().get(mDataset.get(position).getNumberEvent()).getEventPicture() );
         if(mDataset.get(position).getContenuto().startsWith("Sei stato ingaggiato per l'evento")){
             holder.mStatus.setImageDrawable(holder.mStatus.getResources().getDrawable(R.drawable.positive));
             holder.mStatus.setBackground(holder.mStatus.getResources().getDrawable(R.drawable.round_button_notification));
@@ -110,7 +111,8 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             holder.everything.setBackground(holder.everything.getResources().getDrawable(R.color.colorNotificationOld));
 
         }
-        holder.everything.setOnClickListener(new View.OnClickListener(){
+        if(mDataset.get(position).getNumberEvent()>-1)
+            holder.everything.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {

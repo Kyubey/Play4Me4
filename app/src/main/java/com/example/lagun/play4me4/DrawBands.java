@@ -43,6 +43,14 @@ public class DrawBands extends AppCompatActivity
         utente= ObjectFactory.getLoggedUser(getApplicationContext());
         ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
         Button numberNote = findViewById(R.id.numberNote);
+
+        imageTool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DrawBands.this, Notification.class);
+                startActivity(i);
+            }
+        });
         if(utente.numNotifiche()!=0) {
             numberNote.setText(Integer.toString(utente.numNotifiche()));
         }
