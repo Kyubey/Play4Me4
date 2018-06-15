@@ -56,7 +56,7 @@ public class BandsHome2 extends AppCompatActivity {
         imageTool.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(BandsHome.this, Notification.class);
+                Intent i = new Intent(BandsHome2.this, Notification.class);
                 startActivity(i);
             }
         });
