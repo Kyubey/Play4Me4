@@ -5,7 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.support.design.widget.Snackbar;
+<<<<<<< HEAD
 import android.content.Intent;
+=======
+
+>>>>>>> 1544c1636386630b3783a8552e9613959997d036
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
