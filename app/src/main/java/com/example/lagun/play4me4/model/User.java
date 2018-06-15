@@ -6,6 +6,8 @@ import android.location.Address;
 import android.media.Image;
 import android.provider.ContactsContract;
 
+import java.util.ArrayList;
+
 public class User {
     private String name;
     private String mail;
@@ -16,6 +18,7 @@ public class User {
     private String info;
     private Drawable proPicture;
     private boolean club;
+    private ArrayList<Notify> notifiche=new ArrayList<Notify>();
 
     public User(String name, String mail, String password,boolean club){
         this.setName(name);
@@ -102,5 +105,44 @@ public class User {
 
     public void setClub(boolean club) {
         this.club = club;
+    }
+
+    public void addNotify(Notify notifica){
+        this.notifiche.add(notifica);
+    }
+
+    public void vediNotifiche(){
+        for(Notify notify: notifiche){
+            notify.seen=true;
+        }
+    }
+
+    public ArrayList<Notify> getNotifiche() {
+        return notifiche;
+    }
+
+    public int numNotifiche(){
+        int i=0;
+        for(Notify notify: notifiche){
+            if(!notify.seen)
+                i++;
+        }
+        return i;
+    }
+
+    public ArrayList<Notify> getNuoveNotifiche(){
+        ArrayList<Notify> array=new ArrayList();
+        for(Notify notify: notifiche)
+            if(!notify.seen)
+                array.add(notify);
+        return array;
+    }
+
+    public ArrayList<Notify> getVecchieNotifiche(){
+        ArrayList<Notify> array=new ArrayList();
+        for(Notify notify: notifiche)
+            if(notify.seen)
+                array.add(notify);
+        return array;
     }
 }
