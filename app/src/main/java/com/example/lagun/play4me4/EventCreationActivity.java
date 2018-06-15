@@ -79,7 +79,7 @@ public class EventCreationActivity extends AppCompatActivity {
                                         accettato.addNotify(new Notify(-1,"L'evento "+evento.getNome()+" a cui partecipavi è stato cancellato"));
                                     }
                                     ObjectFactory.getEventi().remove(getIntent().getIntExtra("numberEvent", -1));
-                                    Intent i=new Intent(EventCreationActivity.this, ClubHomeActivity.class);
+                                    Intent i=new Intent(EventCreationActivity.this, DrawClub.class);
                                     i.putExtra("Deleted",true);
                                     startActivity(i);
                                 }
@@ -211,7 +211,7 @@ public class EventCreationActivity extends AppCompatActivity {
             }
 
             ObjectFactory.createEvent(nuovo);
-            i = new Intent(EventCreationActivity.this, ClubHomeActivity.class);}
+            i = new Intent(EventCreationActivity.this, DrawClub.class);}
             else{
                 int numberEvent=getIntent().getIntExtra("numberEvent",-1);
                 ObjectFactory.eventi.get(numberEvent).setNome(nome);

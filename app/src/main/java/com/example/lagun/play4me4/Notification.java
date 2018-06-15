@@ -76,32 +76,13 @@ public class Notification extends AppCompatActivity {
         super.onResume();
     }
 
+    @Override
+    public void onBackPressed(){
+        if(utente.isClub())
+            startActivity(new Intent(Notification.this,DrawClub.class));
+        else
+            startActivity(new Intent(Notification.this,BandsHome.class));
 
-
-    private List<SimpleViewModel> generateSimpleList() {
-        List<SimpleViewModel> simpleViewModelList = new ArrayList<>();
-
-        for (int i = 0; i < 100; i++) {
-            simpleViewModelList.add(new SimpleViewModel(String.format(Locale.US, "This is item %d", i)));
-        }
-
-        return simpleViewModelList;
-    }
-
-    public class SimpleViewModel {
-        private String simpleText;
-
-        public SimpleViewModel(final String simpleText) {
-            setSimpleText(simpleText);
-        }
-
-        public String getSimpleText() {
-            return simpleText;
-        }
-
-        public void setSimpleText(final String simpleText) {
-            this.simpleText = simpleText;
-        }
     }
     //Paolo@paolo.it
 }
