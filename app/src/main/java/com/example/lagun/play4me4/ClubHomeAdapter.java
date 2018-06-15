@@ -47,10 +47,9 @@ public class ClubHomeAdapter extends RecyclerView.Adapter<ClubHomeAdapter.ViewHo
         mDataset=new HashMap<>();
         Iterator<Map.Entry<Integer, Event>> iterator = myDataset.entrySet().iterator();
         int i=0;
-        while(iterator.hasNext()){
-            mDataset.put(i++,iterator.next());
+        while(iterator.hasNext()) {
+            mDataset.put(i++, iterator.next());
         }
-        i+=0;
     }
 
     // Create new views (invoked by the layout manager)
