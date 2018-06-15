@@ -100,10 +100,6 @@ public class DrawBands extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -116,7 +112,10 @@ public class DrawBands extends AppCompatActivity
 
         if (id == R.id.nav_logout) {
             startActivity(new Intent(DrawBands.this,LoginActivity.class));
-        }
+        }else
+            if(id == R.id.nav_agenda){
+            startActivity(new Intent(DrawBands.this,AgendaActivity.class));
+            }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

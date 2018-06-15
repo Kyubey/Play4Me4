@@ -32,15 +32,19 @@ public class AgendaActivity extends AppCompatActivity {
         final User utente = ObjectFactory.getLoggedUser(getApplicationContext());
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setTitle(null);
+
 
         compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
         //Set an event for
-        Iterator<Map.Entry<Integer, Event>> iterator = ObjectFactory.getEventiAccettati(utente).entrySet().iterator();
-        while (iterator.hasNext()){
-            Map.Entry<Integer, Event> next = iterator.next();
-            compactCalendar.addEvent(new com.github.sundeepk.compactcalendarview.domain.Event(Color.GREEN, next.getValue().getData().getTimeInMillis(),next.getValue().getNome()));
+        if(!utente.isClub()){
+            for (Map.Entry<Integer, Event> next : ObjectFactory.getEventiAccettati(utente).entrySet()) {
+                compactCalendar.addEvent(new com.github.sundeepk.compactcalendarview.domain.Event(Color.GREEN, next.getValue().getData().getTimeInMillis(), next.getValue().getNome()));
+            }
+        }else {
+            for (Map.Entry<Integer, Event> next : ObjectFactory.getTuoiEventi(utente).entrySet()) {
+                compactCalendar.addEvent(new com.github.sundeepk.compactcalendarview.domain.Event(Color.GREEN, next.getValue().getData().getTimeInMillis(), next.getValue().getNome()));
+            }
         }
 
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -49,8 +53,12 @@ public class AgendaActivity extends AppCompatActivity {
                 Context context =getApplicationContext();
 
                 for(Map.Entry<Integer,Event> evento:ObjectFactory.getEventiAccettati(utente).entrySet()){
-                    if(dateClicked.equals(evento.getValue().getData()))
-                        Toast.makeText(context,evento.getValue().getNome(), Toast.LENGTH_SHORT);
+                    if(dateClicked.toString().substring(0,10).equals(evento.getValue().getData().getTime().toString().substring(0,10)))
+                        Toast.makeText(context,evento.getValue().getNome(), Toast.LENGTH_SHORT).show();
+                }
+                for(Map.Entry<Integer,Event> evento:ObjectFactory.getTuoiEventi(utente).entrySet()){
+                    if(dateClicked.toString().substring(0,10).equals(evento.getValue().getData().getTime().toString().substring(0,10)))
+                        Toast.makeText(context,evento.getValue().getNome(), Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -60,6 +68,7 @@ public class AgendaActivity extends AppCompatActivity {
 
             }
         });
+        actionBar.setTitle(dateFormatMonth.format(compactCalendar.getFirstDayOfCurrentMonth()));
     }
 
 }

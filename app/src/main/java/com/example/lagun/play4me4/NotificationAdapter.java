@@ -52,14 +52,17 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public NotificationAdapter(ArrayList<Notify> myNewNotifiche, ArrayList<Notify> myOldNotifiche) {
         mDataset=new ArrayList<Notify>();
         numNewNotifiche=0;
-        for(Notify notify:myNewNotifiche){
-            mDataset.add(notify);
+        for(int i=myNewNotifiche.size()-1;i>-1;i--){
+            mDataset.add(myNewNotifiche.get(i));
             numNewNotifiche++;
         }
 
-        for(Notify notify:myOldNotifiche)
-            mDataset.add(notify);
+        for(int i=myOldNotifiche.size()-1;i>-1;i--){
+            mDataset.add(myOldNotifiche.get(i));
+            numNewNotifiche++;
+        }
         numNewNotifiche+=0;
+
     }
 
     // Create new views (invoked by the layout manager)

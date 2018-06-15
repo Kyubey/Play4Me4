@@ -113,6 +113,9 @@ public class DrawClub extends AppCompatActivity
 
         if (id == R.id.nav_logout) {
             startActivity(new Intent(DrawClub.this,LoginActivity.class));
+        }else
+        if(id == R.id.nav_agenda){
+            startActivity(new Intent(DrawClub.this,AgendaActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
