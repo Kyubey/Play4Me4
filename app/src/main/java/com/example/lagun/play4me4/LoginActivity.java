@@ -348,7 +348,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                Intent i = new Intent(LoginActivity.this, ObjectFactory.typeUser(mEmail) ? ClubHomeActivity.class : BandsHome.class);
+                Intent i = new Intent(LoginActivity.this, ObjectFactory.typeUser(mEmail) ? DrawClub.class : BandsHome.class);
                 SharedPreferences.Editor edit= PreferenceManager.getDefaultSharedPreferences(LoginActivity.this).edit();
                 edit.putString("userMail", mEmail);
                 edit.commit();
@@ -364,6 +364,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    @Override
+    public void onBackPressed(){
+        moveTaskToBack(true);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
     }
 }
 

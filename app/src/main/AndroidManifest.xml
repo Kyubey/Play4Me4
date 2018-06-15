@@ -25,13 +25,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="@string/app_name"><intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter></activity>
         <activity
             android:name=".GestioneBands"
             android:label="@string/title_activity_gestione_bands"
@@ -68,7 +65,11 @@
         <activity android:name=".EventCreationActivity" />
         <activity android:name=".ImageGalleryActivity" />
         <activity android:name=".EventPageActivity" />
-        <activity android:name=".EventPageActivityBand"></activity>
+        <activity android:name=".EventPageActivityBand" />
+        <activity
+            android:name=".DrawClub"
+            android:label="@string/title_activity_draw_club"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

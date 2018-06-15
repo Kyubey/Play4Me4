@@ -4,12 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ClubHomeActivity extends AppCompatActivity {
+public class ClubHomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -83,6 +90,15 @@ public class ClubHomeActivity extends AppCompatActivity {
             }
         });
 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -100,32 +116,13 @@ public class ClubHomeActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
-
-    private List<SimpleViewModel> generateSimpleList() {
-        List<SimpleViewModel> simpleViewModelList = new ArrayList<>();
-
-        for (int i = 0; i < 100; i++) {
-            simpleViewModelList.add(new SimpleViewModel(String.format(Locale.US, "This is item %d", i)));
-        }
-
-        return simpleViewModelList;
     }
 
-    public class SimpleViewModel {
-        private String simpleText;
-
-        public SimpleViewModel(final String simpleText) {
-            setSimpleText(simpleText);
-        }
-
-        public String getSimpleText() {
-            return simpleText;
-        }
-
-        public void setSimpleText(final String simpleText) {
-            this.simpleText = simpleText;
-        }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
     }
-    //Paolo@paolo.it
 }

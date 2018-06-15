@@ -2,13 +2,14 @@ package com.example.lagun.play4me4.model;
 
 import android.graphics.drawable.Drawable;
 import android.location.Address;
+import android.support.annotation.NonNull;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-public class Event {
+public class Event implements Comparable<Event>{
     private String nome;
     private GregorianCalendar data;
     private Address place;
@@ -140,5 +141,10 @@ public Event(String nome,GregorianCalendar data,User owner, String description){
 
     public void setData(GregorianCalendar data) {
         this.data = data;
+    }
+
+    @Override
+    public int compareTo(@NonNull Event event) {
+        return this.getData().compareTo(event.getData());
     }
 }
