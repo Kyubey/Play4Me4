@@ -1,9 +1,11 @@
 package com.example.lagun.play4me4;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.lagun.play4me4.model.DateUtils;
 import com.example.lagun.play4me4.model.Event;
+import com.example.lagun.play4me4.model.Notify;
 import com.example.lagun.play4me4.model.ObjectFactory;
 import com.example.lagun.play4me4.model.User;
 import com.google.android.gms.maps.model.LatLng;
@@ -54,10 +57,10 @@ public class EventCreationActivity extends AppCompatActivity {
 
         mImageView=(ImageView) findViewById(R.id.image_event);
         Button mCreation = (Button) findViewById(R.id.event_accept_buton);
-
+        Button mDelete = (Button) findViewById(R.id.event_delete);
         if(getIntent().getIntExtra("numberEvent",-1)!=-1){
 
-            Event evento= ObjectFactory.getEventi().get(getIntent().getIntExtra("numberEvent", -1));
+            final Event evento= ObjectFactory.getEventi().get(getIntent().getIntExtra("numberEvent", -1));
             mNameEventView.setText(evento.getNome());
             //mDataView.setText(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()));
             mDataView.setText(DateUtils.formatDateExtended(evento.data));
@@ -65,8 +68,40 @@ public class EventCreationActivity extends AppCompatActivity {
             mImageView.setImageDrawable(evento.getEventPicture());
             mDescriptionView.setText(evento.getDescription());
             mAddressView.setText(evento.getStringPlace());
+            mDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setCancelable(true);
+                    builder.setTitle("Title");
+                    builder.setMessage("Message");
+                    builder.setPositiveButton("Confirm",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    for(User accettato: evento.getAccettati()){
+                                        accettato.disableNotifiche(getIntent().getIntExtra("numberEvent", -1));
+                                        accettato.addNotify(new Notify(-1,"L'evento "+evento.getNome()+" a cui partecipavi è stato cancellato"));
+                                    }
+                                    ObjectFactory.getEventi().remove(getIntent().getIntExtra("numberEvent", -1));
+                                    Intent i=new Intent(EventCreationActivity.this, ClubHomeActivity.class);
+                                    i.putExtra("Deleted",true);
+                                    startActivity(i);
+                                }
+                            });
+                    builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
 
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            });
         }
+        else
+            mDelete.setVisibility(View.INVISIBLE);
         mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +115,7 @@ public class EventCreationActivity extends AppCompatActivity {
             }
         });
     }
+
 
     protected void attemptInsertPic(){
         mAll.setVisibility(View.GONE);

@@ -23,6 +23,7 @@
     </string>
     <string name="plus_button">+</string>
     <string name="crea">Crea</string>
+    <string name="delete">Cancella evento</string>
     <string name="nome_evento">Nome Evento</string>
     <string name="data_evento">Data</string>
     <string name="ora_evento">Ora</string>

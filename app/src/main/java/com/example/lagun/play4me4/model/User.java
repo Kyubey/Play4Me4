@@ -145,4 +145,10 @@ public class User {
                 array.add(notify);
         return array;
     }
+
+    public void disableNotifiche(int numEvent){
+        for(Notify notifica: notifiche)
+            if(notifica.numberEvent==numEvent)
+                notifica.numberEvent=-1;
+    }
 }
