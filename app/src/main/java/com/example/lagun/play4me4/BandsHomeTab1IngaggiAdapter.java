@@ -68,7 +68,7 @@ public class BandsHomeTab1IngaggiAdapter extends RecyclerView.Adapter<BandsHomeT
         // - replace the contents of the view with that element
         holder.mImage.setImageDrawable(mDataset.get(position).getEventPicture());
         holder.mName.setText(mDataset.get(position).getNome());
-        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).data.getTime()).split("/")[0])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).data.getTime()).split("/")[1], 1)+" "+ DateUtils.formatTime(mDataset.get(position).data));
+        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getData().getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getData().getTime()).split("/")[0], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getData()));
         holder.mOrganizer.setText(mDataset.get(position).getOwner().getName());
     }
 

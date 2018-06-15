@@ -82,7 +82,15 @@ public class ClubHomeActivity extends AppCompatActivity {
     protected void onResume(){
         if(mAdapter!=null)
             mAdapter.notifyDataSetChanged();
+        if(getIntent().getBooleanExtra("Deleted",false))
+            startActivity(new Intent(ClubHomeActivity.this,ClubHomeActivity.class));
         super.onResume();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+
     }
 
 

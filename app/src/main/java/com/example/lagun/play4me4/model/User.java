@@ -1,10 +1,7 @@
 package com.example.lagun.play4me4.model;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
-import android.media.Image;
-import android.provider.ContactsContract;
 
 import java.util.ArrayList;
 
@@ -113,7 +110,7 @@ public class User {
 
     public void vediNotifiche(){
         for(Notify notify: notifiche){
-            notify.seen=true;
+            notify.setSeen(true);
         }
     }
 
@@ -124,7 +121,7 @@ public class User {
     public int numNotifiche(){
         int i=0;
         for(Notify notify: notifiche){
-            if(!notify.seen)
+            if(!notify.isSeen())
                 i++;
         }
         return i;
@@ -133,7 +130,7 @@ public class User {
     public ArrayList<Notify> getNuoveNotifiche(){
         ArrayList<Notify> array=new ArrayList();
         for(Notify notify: notifiche)
-            if(!notify.seen)
+            if(!notify.isSeen())
                 array.add(notify);
         return array;
     }
@@ -141,8 +138,14 @@ public class User {
     public ArrayList<Notify> getVecchieNotifiche(){
         ArrayList<Notify> array=new ArrayList();
         for(Notify notify: notifiche)
-            if(notify.seen)
+            if(notify.isSeen())
                 array.add(notify);
         return array;
+    }
+
+    public void disableNotifiche(int numEvent){
+        for(Notify notifica: notifiche)
+            if(notifica.getNumberEvent() ==numEvent)
+                notifica.setNumberEvent(-1);
     }
 }

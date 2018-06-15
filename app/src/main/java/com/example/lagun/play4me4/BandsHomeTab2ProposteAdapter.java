@@ -88,7 +88,7 @@ public class BandsHomeTab2ProposteAdapter extends RecyclerView.Adapter<BandsHome
         holder.mImage.setImageDrawable(mDataset.get(position).getValue().getEventPicture());
         holder.mName.setText(mDataset.get(position).getValue().getNome());
         holder.mPlace.setText(mDataset.get(position).getValue().getStringPlace());
-        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().data.getTime()).split("/")[0])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().data.getTime()).split("/")[1], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getValue().data));
+        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[0])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[1], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getValue().getData()));
         holder.mOrganizer.setText(mDataset.get(position).getValue().getOwner().getName());
     }
 

@@ -17,10 +17,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-public class BandsHome extends AppCompatActivity {
+import com.example.lagun.play4me4.model.ObjectFactory;
+import com.example.lagun.play4me4.model.User;
 
+public class BandsHome extends AppCompatActivity {
+    User utente;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -43,6 +48,16 @@ public class BandsHome extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setSubtitle("Impariamo ad usare la Toolbar");
+        getSupportActionBar().setTitle("Club Home");
+        utente= ObjectFactory.getLoggedUser(getApplicationContext());
+        ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
+        Button numberNote = findViewById(R.id.numberNote);
+        if(utente.numNotifiche()!=0) {
+            numberNote.setText(Integer.toString(utente.numNotifiche()));
+        }
+        else
+            numberNote.setVisibility(View.INVISIBLE);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());

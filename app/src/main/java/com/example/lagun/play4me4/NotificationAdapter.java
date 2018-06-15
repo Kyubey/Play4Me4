@@ -3,6 +3,7 @@ package com.example.lagun.play4me4;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.media.Image;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.example.lagun.play4me4.model.DateUtils;
 import com.example.lagun.play4me4.model.Event;
 import com.example.lagun.play4me4.model.Notify;
+import com.example.lagun.play4me4.model.ObjectFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -79,14 +81,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mTextView.setText(mDataset.get(position).);
-        holder.mImage.setImageDrawable(mDataset.get(position));
+        holder.mTextView.setText(mDataset.get(position).getContenuto());
+        holder.mImage.setImageDrawable(ObjectFactory.getEventi().get(mDataset.get(position).getNumberEvent()).getEventPicture() );
         holder.everything.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), EventPageActivity.class);
-                i.putExtra("numberEvent", mDataset.get(position).);
+                i.putExtra("numberEvent", mDataset.get(position).getNumberEvent());
                 view.getContext().startActivity(i);
             }
         });

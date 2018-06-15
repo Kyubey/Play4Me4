@@ -40,8 +40,8 @@
     <color name="window_background">#8126e9</color>
 
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">#FFFF00</item>
-        <item name="colorPrimaryDark">#FFD600</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:windowBackground">@color/window_background</item>
     </style>
 
