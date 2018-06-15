@@ -33,11 +33,7 @@ public class Notification extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setSubtitle("Impariamo ad usare la Toolbar");
-        getSupportActionBar().setTitle("Notifiche");
+        setContentView(R.layout.activity_notification_layout);
         utente=ObjectFactory.getLoggedUser(getApplicationContext());
         ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
         Button numberNote = findViewById(R.id.numberNote);

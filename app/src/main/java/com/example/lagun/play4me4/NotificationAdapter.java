@@ -27,7 +27,6 @@ import java.util.Map;
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.ViewHolder> {
     private ArrayList<Notify> mDataset;
     private int numNewNotifiche;
-    private int numOldNotifiche;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -51,17 +50,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     // Provide a suitable constructor (depends on the kind of dataset)
     public NotificationAdapter(ArrayList<Notify> myNewNotifiche, ArrayList<Notify> myOldNotifiche) {
         mDataset=new ArrayList<Notify>();
-
         numNewNotifiche=0;
-        numOldNotifiche=0;
-        while(myNewNotifiche.get(numNewNotifiche)!=null) {
-            mDataset.set(numNewNotifiche, myNewNotifiche.get(numNewNotifiche));
-            numNewNotifiche++;
-        }
-        while(myOldNotifiche.get(numOldNotifiche)!=null) {
-            mDataset.set(numNewNotifiche+numOldNotifiche, myOldNotifiche.get(numOldNotifiche));
-            numOldNotifiche++;
-        }
+        for(Notify notify:myNewNotifiche){
+            mDataset.add(notify);
+        numNewNotifiche++;}
+
+        for(Notify notify:myOldNotifiche)
+            mDataset.add(notify);
     }
 
     // Create new views (invoked by the layout manager)
@@ -83,6 +78,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset.get(position).getContenuto());
         holder.mImage.setImageDrawable(ObjectFactory.getEventi().get(mDataset.get(position).getNumberEvent()).getEventPicture() );
+
         holder.everything.setOnClickListener(new View.OnClickListener(){
 
             @Override
