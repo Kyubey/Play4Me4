@@ -95,6 +95,12 @@ public class ObjectFactory{
             array.put(totalEvents,Panini);
             totalEvents++;
             //Event Marcheggio=new Event("Marchiamo!");
+
+            Event Banana=new Event("Viva Bananas!", DateUtils.parseDateTime("13/09/2018 - 22:00"),club.get(0),"We are going bananas");
+            Banana.setEventPicture(res.getDrawable(R.drawable.ic_descrive));
+            Banana.setStringPlace("Via Roma77 Cagliari");
+            array.put(totalEvents,Banana);
+            totalEvents++;
         }
         return array;
 
