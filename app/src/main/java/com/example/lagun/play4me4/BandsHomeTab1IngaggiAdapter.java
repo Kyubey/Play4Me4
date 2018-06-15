@@ -1,14 +1,11 @@
 package com.example.lagun.play4me4;
 
 
-<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.support.design.widget.Snackbar;
-=======
-import android.content.Intent;
->>>>>>> efea90da21360020cf38e67db1f9999483975a6e
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
