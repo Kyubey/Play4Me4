@@ -40,6 +40,13 @@ public class ClubHomeActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Club Home");
         utente=ObjectFactory.getLoggedUser(getApplicationContext());
         ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
+        findViewById(R.id.noticeMe).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ClubHomeActivity.this, Notification.class);
+                startActivity(i);
+            }
+        });
         Button numberNote = findViewById(R.id.numberNote);
         if(utente.numNotifiche()!=0) {
             numberNote.setText(Integer.toString(utente.numNotifiche()));
