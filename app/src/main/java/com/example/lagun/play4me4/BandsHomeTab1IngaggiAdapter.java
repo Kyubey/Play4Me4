@@ -73,7 +73,7 @@ public class BandsHomeTab1IngaggiAdapter extends RecyclerView.Adapter<BandsHomeT
         // - replace the contents of the view with that element
         holder.mImage.setImageDrawable(mDataset.get(position).getValue().getEventPicture());
         holder.mName.setText(mDataset.get(position).getValue().getNome());
-        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[0], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getValue().getData()));
+        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[0])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[1], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getValue().getData()));
         holder.mOrganizer.setText(mDataset.get(position).getValue().getOwner().getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,4 +8,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorNegativeButton">#ff2626</color>
     <color name="colorPositiveButton">#0db904</color>
+    <color name="colorNotificationNew">#b1f7f485</color>
+    <color name="colorNotificationOld">#b1e8e8db</color>
+    <color name="colorRefused">#ffb133</color>
 </resources>

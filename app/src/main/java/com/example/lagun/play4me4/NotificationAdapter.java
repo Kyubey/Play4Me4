@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.media.Image;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,10 +54,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         numNewNotifiche=0;
         for(Notify notify:myNewNotifiche){
             mDataset.add(notify);
-        numNewNotifiche++;}
+            numNewNotifiche++;
+        }
 
         for(Notify notify:myOldNotifiche)
             mDataset.add(notify);
+        numNewNotifiche+=0;
     }
 
     // Create new views (invoked by the layout manager)
@@ -65,7 +68,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                                                          int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_club_home, parent, false);
+                .inflate(R.layout.activity_notification, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -78,7 +81,35 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         // - replace the contents of the view with that element
         holder.mTextView.setText(mDataset.get(position).getContenuto());
         holder.mImage.setImageDrawable(ObjectFactory.getEventi().get(mDataset.get(position).getNumberEvent()).getEventPicture() );
+        if(mDataset.get(position).getContenuto().startsWith("Sei stato ingaggiato per l'evento")){
+            holder.mStatus.setImageDrawable(holder.mStatus.getResources().getDrawable(R.drawable.positive));
+            holder.mStatus.setBackground(holder.mStatus.getResources().getDrawable(R.drawable.round_button_notification));
 
+        }else if(mDataset.get(position).getContenuto().startsWith("Sei stato rimosso per l'evento ")){
+            holder.mStatus.setImageDrawable(holder.mStatus.getResources().getDrawable(R.drawable.ic_thumbs_down));
+            holder.mStatus.setBackground(holder.mStatus.getResources().getDrawable(R.drawable.icona_notifica_rifiuto));
+
+        }else if(mDataset.get(position).getContenuto().startsWith("Hai nuove proposte per l'evento ")){
+            holder.mStatus.setImageDrawable(holder.mStatus.getResources().getDrawable(R.drawable.ic_invite));
+            holder.mStatus.setBackground(holder.mStatus.getResources().getDrawable(R.drawable.icona_notifica_invito));
+
+
+        }else if(mDataset.get(position).getContenuto().endsWith("a cui partecipavi è stato cancellato")){
+            holder.mStatus.setImageDrawable(holder.mStatus.getResources().getDrawable(R.drawable.ic_deleted));
+            holder.mStatus.setBackground(holder.mStatus.getResources().getDrawable(R.drawable.icona_notifica_delete));
+
+        }else if(mDataset.get(position).getContenuto().startsWith("La band ")){
+            holder.mStatus.setImageDrawable(holder.mStatus.getResources().getDrawable(R.drawable.ic_thumbs_down));
+            holder.mStatus.setBackground(holder.mStatus.getResources().getDrawable(R.drawable.icona_notifica_rifiuto));
+
+        }
+        if(!mDataset.get(position).isSeen()){
+            holder.everything.setBackground(holder.everything.getResources().getDrawable(R.color.colorNotificationNew));
+            mDataset.get(position).setSeen(true);
+        }else{
+            holder.everything.setBackground(holder.everything.getResources().getDrawable(R.color.colorNotificationOld));
+
+        }
         holder.everything.setOnClickListener(new View.OnClickListener(){
 
             @Override

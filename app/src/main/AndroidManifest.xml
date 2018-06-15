@@ -40,7 +40,8 @@
             android:name=".BandsHome"
             android:label="@string/title_activity_bands_home"
             android:theme="@style/AppBaseTheme" />
-        <activity android:name=".Notification" />
+        <activity android:name=".Notification"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Settings"
             android:label="@string/title_activity_settings"

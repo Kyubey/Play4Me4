@@ -29,11 +29,14 @@ public class Notification extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private User utente;
 
-    private Button mButtonCreatorView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Notifiche");
         utente=ObjectFactory.getLoggedUser(getApplicationContext());
         ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
         Button numberNote = findViewById(R.id.numberNote);
@@ -44,7 +47,7 @@ public class Notification extends AppCompatActivity {
             numberNote.setVisibility(View.INVISIBLE);
 
         mAdapter = new NotificationAdapter(utente.getNuoveNotifiche(), utente.getVecchieNotifiche());
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.content_notification);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
@@ -63,14 +66,6 @@ public class Notification extends AppCompatActivity {
         mAdapter = new ClubHomeAdapter(new String[]{"Proviamo"});
         mRecyclerView.setAdapter(mAdapter);/*/
 
-        mButtonCreatorView= (Button)findViewById(R.id.event_creation);
-        mButtonCreatorView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Notification.this, EventCreationActivity.class);
-                startActivity(i);
-            }
-        });
 
     }
 
