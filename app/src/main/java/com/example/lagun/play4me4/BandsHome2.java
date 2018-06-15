@@ -53,6 +53,13 @@ public class BandsHome2 extends AppCompatActivity {
         getSupportActionBar().setTitle("Club Home");
         utente= ObjectFactory.getLoggedUser(getApplicationContext());
         ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
+        imageTool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(BandsHome.this, Notification.class);
+                startActivity(i);
+            }
+        });
         Button numberNote = findViewById(R.id.numberNote);
         if(utente.numNotifiche()!=0) {
             numberNote.setText(Integer.toString(utente.numNotifiche()));
