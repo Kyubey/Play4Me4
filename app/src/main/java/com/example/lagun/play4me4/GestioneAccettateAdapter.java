@@ -81,7 +81,7 @@ public class GestioneAccettateAdapter extends RecyclerView.Adapter<GestioneAccet
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                evento.second.rimuoviAccettato(mDataset.get(position));
+                                evento.second.rimuoviAccettato(mDataset.get(position),evento.first);
                                 notifyItemRemoved(position);
                                 notifyItemRangeChanged(position, getItemCount());
                             }

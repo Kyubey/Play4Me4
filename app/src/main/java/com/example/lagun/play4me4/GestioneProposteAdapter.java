@@ -87,7 +87,7 @@ public class GestioneProposteAdapter extends RecyclerView.Adapter<GestionePropos
         holder.mAccept.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                evento.second.accettaNuovo(mDataset.get(position));
+                evento.second.accettaNuovo(mDataset.get(position),evento.first);
                 evento.second.rimuoviProposto(mDataset.get(position));
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());

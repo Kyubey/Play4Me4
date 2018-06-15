@@ -2,6 +2,7 @@ package com.example.lagun.play4me4;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 
 import com.example.lagun.play4me4.model.ObjectFactory;
@@ -37,7 +39,13 @@ public class ClubHomeActivity extends AppCompatActivity {
         toolbar.setSubtitle("Impariamo ad usare la Toolbar");
         getSupportActionBar().setTitle("Club Home");
         utente=ObjectFactory.getLoggedUser(getApplicationContext());
-
+        ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
+        Button numberNote = findViewById(R.id.numberNote);
+        if(utente.numNotifiche()!=0) {
+            numberNote.setText(Integer.toString(utente.numNotifiche()));
+        }
+        else
+            numberNote.setVisibility(View.INVISIBLE);
 
         mAdapter = new ClubHomeAdapter(ObjectFactory.getTuoiEventi(utente));
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.my_recycler_view);

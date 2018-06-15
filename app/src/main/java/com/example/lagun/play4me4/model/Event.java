@@ -84,12 +84,19 @@ public Event(String nome,GregorianCalendar data,User owner, String description){
         this.eventPicture = eventPicture;
     }
 
-    public void accettaNuovo(User nuovo){
-        accettati.add(nuovo);
+    public void accettaNuovo(User accettato,int event){
+        accettati.add(accettato);
+        accettato.addNotify(new Notify(event,"Sei stato ingaggiato per l'evento "+this.getNome()));
     }
 
-    public void rimuoviAccettato(User nuovo){
-        accettati.remove(nuovo);
+    public void rimuoviAccettato(User rimosso,int event){
+        accettati.remove(rimosso);
+        rimosso.addNotify(new Notify(event, "Sei stato rimosso per l'evento " +this.getNome()));
+    }
+
+    public void rimuoviDaAccettati(User rimosso,int event){
+        accettati.remove(rimosso);
+        owner.addNotify(new Notify(event,"La band "+rimosso.getName()+" si è ritirata dall'evento "+getNome()));
     }
 
     public ArrayList<User> getAccettati() {
@@ -100,8 +107,12 @@ public Event(String nome,GregorianCalendar data,User owner, String description){
         this.accettati = accettati;
     }
 
-    public void proponiNuovo(User nuovo){
-        proposti.add(nuovo);
+    public void proponiNuovo(User proposto,int event){
+        proposti.add(proposto);
+        for(Notify notifica:owner.getNotifiche())
+        if(notifica.seen==false && notifica.contenuto.equals("Hai nuove proposte per l'evento "+this.getNome()))
+            return;
+        this.owner.addNotify(new Notify(event,"Hai nuove proposte per l'evento "+this.getNome()));
     }
 
     public void rimuoviProposto(User nuovo){
