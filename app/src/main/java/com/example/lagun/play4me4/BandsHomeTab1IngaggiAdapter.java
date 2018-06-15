@@ -1,10 +1,14 @@
 package com.example.lagun.play4me4;
 
 
+<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.support.design.widget.Snackbar;
+=======
+import android.content.Intent;
+>>>>>>> efea90da21360020cf38e67db1f9999483975a6e
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +24,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Map;
 
 public class BandsHomeTab1IngaggiAdapter extends RecyclerView.Adapter<BandsHomeTab1IngaggiAdapter.ViewHolder> {
-    private HashMap<Integer,Event> mDataset;
+    private HashMap<Integer,Map.Entry<Integer,Event>> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -46,7 +51,10 @@ public class BandsHomeTab1IngaggiAdapter extends RecyclerView.Adapter<BandsHomeT
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public  BandsHomeTab1IngaggiAdapter(HashMap<Integer,Event> myDataset) {
-        mDataset = myDataset;
+        int i=0;
+        mDataset=new HashMap<>();
+        for(Map.Entry entry: myDataset.entrySet())
+            mDataset.put(i++,entry);
     }
 
     // Create new views (invoked by the layout manager)
@@ -63,13 +71,21 @@ public class BandsHomeTab1IngaggiAdapter extends RecyclerView.Adapter<BandsHomeT
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-        holder.mImage.setImageDrawable(mDataset.get(position).getEventPicture());
-        holder.mName.setText(mDataset.get(position).getNome());
-        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getData().getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getData().getTime()).split("/")[0], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getData()));
-        holder.mOrganizer.setText(mDataset.get(position).getOwner().getName());
+        holder.mImage.setImageDrawable(mDataset.get(position).getValue().getEventPicture());
+        holder.mName.setText(mDataset.get(position).getValue().getNome());
+        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getValue().getData().getTime()).split("/")[0], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getValue().getData()));
+        holder.mOrganizer.setText(mDataset.get(position).getValue().getOwner().getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(view.getContext(),EventPageActivityBand.class);
+                i.putExtra("numberEvent",mDataset.get(position).getKey());
+                view.getContext().startActivity(i);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)
