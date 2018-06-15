@@ -1,10 +1,6 @@
 package com.example.lagun.play4me4;
 
 
-import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +10,8 @@ import android.widget.TextView;
 
 import com.example.lagun.play4me4.model.DateUtils;
 import com.example.lagun.play4me4.model.Event;
-import com.example.lagun.play4me4.model.User;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class BandsHomeTab1IngaggiAdapter extends RecyclerView.Adapter<BandsHomeTab1IngaggiAdapter.ViewHolder> {
@@ -68,7 +61,7 @@ public class BandsHomeTab1IngaggiAdapter extends RecyclerView.Adapter<BandsHomeT
         // - replace the contents of the view with that element
         holder.mImage.setImageDrawable(mDataset.get(position).getEventPicture());
         holder.mName.setText(mDataset.get(position).getNome());
-        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).data.getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).data.getTime()).split("/")[0], 1)+" "+ DateUtils.formatTime(mDataset.get(position).data));
+        holder.mDate.setText((new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getData().getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(mDataset.get(position).getData().getTime()).split("/")[0], 1)+" "+ DateUtils.formatTime(mDataset.get(position).getData()));
         holder.mOrganizer.setText(mDataset.get(position).getOwner().getName());
     }
 

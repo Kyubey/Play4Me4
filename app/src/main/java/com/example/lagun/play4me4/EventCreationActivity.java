@@ -2,7 +2,6 @@ package com.example.lagun.play4me4;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.v7.app.AlertDialog;
@@ -10,12 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.lagun.play4me4.model.DateUtils;
 import com.example.lagun.play4me4.model.Event;
@@ -25,9 +22,7 @@ import com.example.lagun.play4me4.model.User;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 public class EventCreationActivity extends AppCompatActivity {
@@ -63,8 +58,8 @@ public class EventCreationActivity extends AppCompatActivity {
             final Event evento= ObjectFactory.getEventi().get(getIntent().getIntExtra("numberEvent", -1));
             mNameEventView.setText(evento.getNome());
             //mDataView.setText(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()));
-            mDataView.setText(DateUtils.formatDateExtended(evento.data));
-            mHourView.setText(DateUtils.formatTime(evento.data));
+            mDataView.setText(DateUtils.formatDateExtended(evento.getData()));
+            mHourView.setText(DateUtils.formatTime(evento.getData()));
             mImageView.setImageDrawable(evento.getEventPicture());
             mDescriptionView.setText(evento.getDescription());
             mAddressView.setText(evento.getStringPlace());
@@ -222,7 +217,7 @@ public class EventCreationActivity extends AppCompatActivity {
                 ObjectFactory.eventi.get(numberEvent).setNome(nome);
                 ObjectFactory.eventi.get(numberEvent).setStringPlace(mAddressView.getText().toString());
                 ObjectFactory.eventi.get(numberEvent).setEventPicture(mImageView.getDrawable());
-                ObjectFactory.eventi.get(numberEvent).data=DateUtils.parseDateTime(data+" - "+ora);
+                ObjectFactory.eventi.get(numberEvent).setData(DateUtils.parseDateTime(data+" - "+ora));
                 if(indirizzo!=null){
                     ObjectFactory.eventi.get(numberEvent).setPlace(indirizzo);
                     if(coordinate!=null){

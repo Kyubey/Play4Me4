@@ -1,11 +1,8 @@
 package com.example.lagun.play4me4;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,11 +17,8 @@ import com.example.lagun.play4me4.model.Event;
 import com.example.lagun.play4me4.model.ObjectFactory;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Locale;
 
 public class EventPageActivity extends AppCompatActivity {
@@ -65,9 +59,9 @@ public class EventPageActivity extends AppCompatActivity {
 
         mImage.setImageDrawable(evento.getEventPicture());
         mNome.setText(evento.getNome());
-        mMese.setText(DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()).split("/")[1]));
-        mData.setText(DateUtils.getGiorno(evento.data.get(GregorianCalendar.DAY_OF_WEEK))+" "+(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()).split("/")[0], 1)+" "+" alle ore "+ DateUtils.formatTime(evento.data));
-        mGiorno.setText(new SimpleDateFormat("dd/MM/yyyy").format(evento.data.getTime()).split("/")[0]);
+        mMese.setText(DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(evento.getData().getTime()).split("/")[1]));
+        mData.setText(DateUtils.getGiorno(evento.getData().get(GregorianCalendar.DAY_OF_WEEK))+" "+(new SimpleDateFormat("dd/MM/yyyy").format(evento.getData().getTime()).split("/")[1])+" "+DateUtils.getMese(new SimpleDateFormat("dd/MM/yyyy").format(evento.getData().getTime()).split("/")[0], 1)+" "+" alle ore "+ DateUtils.formatTime(evento.getData()));
+        mGiorno.setText(new SimpleDateFormat("dd/MM/yyyy").format(evento.getData().getTime()).split("/")[0]);
         if(evento.getPlace()!=null) {
             mLuogo.setText(evento.getPlace().getThoroughfare() + " " + evento.getPlace().getFeatureName()+" " + evento.getPlace().getLocality());
         }else{

@@ -6,12 +6,11 @@ import android.location.Address;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Event {
     private String nome;
-    public GregorianCalendar data;
+    private GregorianCalendar data;
     private Address place;
     private String stringPlace;
     private LatLng coordinates;
@@ -22,7 +21,7 @@ public class Event {
     private ArrayList<User> proposti=new ArrayList<>();
 public Event(String nome,GregorianCalendar data,User owner, String description){
     this.nome=nome;
-    this.data=data;
+    this.setData(data);
     //this.place=place;
     this.owner=owner;
     //this.eventPicture=eventPicture;
@@ -30,7 +29,7 @@ public Event(String nome,GregorianCalendar data,User owner, String description){
 }
     public Event(String nome,GregorianCalendar data,User owner, String description, Address place, LatLng coordinates){
         this.nome=nome;
-        this.data=data;
+        this.setData(data);
         this.place=place;
         this.coordinates=coordinates;
         this.owner=owner;
@@ -110,7 +109,7 @@ public Event(String nome,GregorianCalendar data,User owner, String description){
     public void proponiNuovo(User proposto,int event){
         proposti.add(proposto);
         for(Notify notifica:owner.getNotifiche())
-        if(notifica.seen==false && notifica.contenuto.equals("Hai nuove proposte per l'evento "+this.getNome()))
+        if(notifica.isSeen() ==false && notifica.getContenuto().equals("Hai nuove proposte per l'evento "+this.getNome()))
             return;
         this.owner.addNotify(new Notify(event,"Hai nuove proposte per l'evento "+this.getNome()));
     }
@@ -133,5 +132,13 @@ public Event(String nome,GregorianCalendar data,User owner, String description){
 
     public void setStringPlace(String stringPlace) {
         this.stringPlace = stringPlace;
+    }
+
+    public GregorianCalendar getData() {
+        return data;
+    }
+
+    public void setData(GregorianCalendar data) {
+        this.data = data;
     }
 }
