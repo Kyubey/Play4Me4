@@ -78,7 +78,8 @@
         <activity
             android:name=".DrawBands"
             android:label="@string/title_activity_draw_bands"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UserProfileModifierActivity"></activity>
     </application>
 
 </manifest>

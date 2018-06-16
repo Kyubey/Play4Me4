@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.lagun.play4me4.model.ObjectFactory;
@@ -41,6 +42,7 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
     private TextView mNameUser;
     private ImageButton mModificaImageButton;
     private Button mModificaButton;
+    private LinearLayout mModificaLayout;
     private TextView mPlace;
     private TextView mPhone;
     private TextView mInfo;
@@ -60,13 +62,22 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
         mNameUser=findViewById(R.id.event_name);
         mModificaImageButton=findViewById(R.id.modifica_image);
         mModificaButton=findViewById(R.id.modifica);
+        mModificaLayout=findViewById(R.id.modificator);
         mPlace=findViewById(R.id.place);
         mPhone=findViewById(R.id.telephone_number);
         mInfo=findViewById(R.id.info);
         mDesctiption=findViewById(R.id.description);
         mMapWindow=findViewById(R.id.map_window);
+
         imageView.setImageDrawable(profileOwner.getProPicture());
         mNameUser.setText(profileOwner.getName());
+
+        if(profileOwner.getMail().equals(utente.getMail())) {
+            mModificaLayout.setVisibility(View.GONE);
+        }else{
+            mModificaLayout.setVisibility(View.VISIBLE);
+
+        }
 
         if(profileOwner.getIndirizzo()!=null) {
             mPlace.setText(profileOwner.getIndirizzo().getThoroughfare() + " " + profileOwner.getIndirizzo().getFeatureName()+" " + profileOwner.getIndirizzo().getLocality());

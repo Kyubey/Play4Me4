@@ -16,7 +16,7 @@
             android:layout_height="200dp"
             android:layout_marginBottom="10dp"
             android:contentDescription="@string/icona_login"
-            android:src="@mipmap/ic_calendar" />
+            android:src="@drawable/ic_menu_camera" />
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
