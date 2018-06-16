@@ -51,7 +51,7 @@ public class ObjectFactory{
             Paolo.setDescription("Ciao");
             Paolo.setInfo("Miliardario");
             Paolo.setPhoneNumber("2345566");
-            Paolo.setProPicture(res.getDrawable(R.drawable.ic_calendar));
+            Paolo.setProPicture(res.getDrawable(R.drawable.locale_hard_rock));
             array.add(Paolo);
         }
         return array;
@@ -65,14 +65,14 @@ public class ObjectFactory{
             Marco.setDescription("Bella");
             Marco.setInfo("Rocker");
             Marco.setPhoneNumber("63474574");
-            Marco.setProPicture(res.getDrawable(R.drawable.ic_phone));
+            Marco.setProPicture(res.getDrawable(R.drawable.punk_band));
             array.add(Marco);
 
             User Fabio=new User("Fabietto","f@","b",false);
             Fabio.setDescription("Yother");
             Fabio.setInfo("Your' mon");
             Fabio.setPhoneNumber("4324429");
-            Fabio.setProPicture(res.getDrawable(R.drawable.ic_menu_camera));
+            Fabio.setProPicture(res.getDrawable(R.drawable.jazz_band));
             array.add(Fabio);
         }
         return array;
@@ -82,7 +82,7 @@ public class ObjectFactory{
         HashMap<Integer,Event> array=new HashMap<>();
         {
             Event Marcheggio=new Event("Marchiamo!", DateUtils.parseDateTime("11/11/2010 - 20:00"),club.get(0),"Un evento di Marcomanon e' Marco");
-            Marcheggio.setEventPicture(res.getDrawable(R.drawable.ic_location));
+            Marcheggio.setEventPicture(res.getDrawable(R.drawable.disco_music));
             Marcheggio.setStringPlace("Via Ospedale 14 Cagliari");
             Marcheggio.accettaNuovo(band.get(0),0);
             Marcheggio.accettaNuovo(band.get(1),0);
@@ -90,7 +90,7 @@ public class ObjectFactory{
             totalEvents++;
 
             Event Panini=new Event("PANINII!", DateUtils.parseDateTime("04/06/2018 - 22:00"),club.get(0),"Che buoni");
-            Panini.setEventPicture(res.getDrawable(R.drawable.ic_menu_camera));
+            Panini.setEventPicture(res.getDrawable(R.drawable.localeJazz));
             Panini.setStringPlace("Via Cesare Serra 1 Quartucciu");
             Panini.proponiNuovo(band.get(0),1);
             Panini.proponiNuovo(band.get(1),1);
@@ -99,7 +99,7 @@ public class ObjectFactory{
             //Event Marcheggio=new Event("Marchiamo!");
 
             Event Banana=new Event("Viva Bananas!", DateUtils.parseDateTime("13/09/2018 - 22:00"),club.get(0),"We are going bananas");
-            Banana.setEventPicture(res.getDrawable(R.drawable.ic_descrive));
+            Banana.setEventPicture(res.getDrawable(R.drawable.rock));
             Banana.setStringPlace("Via Roma77 Cagliari");
             array.put(totalEvents,Banana);
             totalEvents++;
