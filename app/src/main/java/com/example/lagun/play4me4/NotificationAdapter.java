@@ -119,7 +119,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), EventPageActivity.class);
+                Intent i = new Intent(view.getContext(), EventPageActivityBand.class);
                 i.putExtra("numberEvent", mDataset.get(position).getNumberEvent());
                 view.getContext().startActivity(i);
             }

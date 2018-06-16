@@ -12,6 +12,7 @@ public class User {
     private String phoneNumber;
     private String description;
     private Address indirizzo;
+    private String indirizzoString;
     private String info;
     private Drawable proPicture;
     private boolean club;
@@ -147,5 +148,13 @@ public class User {
         for(Notify notifica: notifiche)
             if(notifica.getNumberEvent() ==numEvent)
                 notifica.setNumberEvent(-1);
+    }
+
+    public String getIndirizzoString() {
+        return indirizzoString;
+    }
+
+    public void setIndirizzoString(String indirizzoString) {
+        this.indirizzoString = indirizzoString;
     }
 }

@@ -10,9 +10,15 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.lagun.play4me4.model.ObjectFactory;
+import com.example.lagun.play4me4.model.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -29,15 +35,65 @@ import java.io.InputStream;
 public class UserProfileActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private User utente=null;
+    private User profileOwner=null;
+    private ImageView mImageView;
+    private TextView mNameUser;
+    private ImageButton mModificaImageButton;
+    private Button mModificaButton;
+    private TextView mPlace;
+    private TextView mPhone;
+    private TextView mInfo;
+    private TextView mDesctiption;
+    private LinearLayout mMapWindow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new BitmapFactory();
-
-        Resources res= getResources();
         setContentView(R.layout.activity_user_profile);
+        new BitmapFactory();
+        utente= ObjectFactory.getLoggedUser(getApplicationContext());
+        profileOwner=ObjectFactory.getFromEmail(getIntent().getStringExtra("userMail"));
+        Resources res= getResources();
         ImageView imageView=(ImageView) findViewById(R.id.image_user);
+        mNameUser=findViewById(R.id.event_name);
+        mModificaImageButton=findViewById(R.id.modifica_image);
+        mModificaButton=findViewById(R.id.modifica);
+        mPlace=findViewById(R.id.place);
+        mPhone=findViewById(R.id.telephone_number);
+        mInfo=findViewById(R.id.info);
+        mDesctiption=findViewById(R.id.description);
+        mMapWindow=findViewById(R.id.map_window);
+        imageView.setImageDrawable(profileOwner.getProPicture());
+        mNameUser.setText(profileOwner.getName());
+
+        if(profileOwner.getIndirizzo()!=null) {
+            mPlace.setText(profileOwner.getIndirizzo().getThoroughfare() + " " + profileOwner.getIndirizzo().getFeatureName()+" " + profileOwner.getIndirizzo().getLocality());
+        }else if(profileOwner.getIndirizzoString()!=null && !profileOwner.getIndirizzoString().isEmpty()){
+            mPlace.setText(profileOwner.getIndirizzoString());
+        }else{
+            mPlace.setText("Luogo Sconosciuto");
+        }
+
+        if(profileOwner.getPhoneNumber()!=null && !profileOwner.getPhoneNumber().isEmpty()){
+            mPhone.setText(profileOwner.getPhoneNumber());
+        }else{
+            mPhone.setText("Numero non pervenuto");
+        }
+
+        if(profileOwner.getInfo()!=null && !profileOwner.getInfo().isEmpty()){
+            mInfo.setText(profileOwner.getInfo());
+        }else{
+            mInfo.setText("-");
+        }
+
+        if(profileOwner.getDescription()!=null && !profileOwner.getDescription().isEmpty()){
+            mDesctiption.setText(profileOwner.getInfo());
+        }else{
+            mDesctiption.setText("-");
+        }
+
 
         //File drawableFile = new     File(getApplicationContext().getFilesDir().getAbsolutePath()+"/ic_calendar.png");
         /*imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_calendar, null));
@@ -101,10 +157,18 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        if(profileOwner.getIndirizzo()!=null){
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            LatLng coordinate = new LatLng(profileOwner.getIndirizzo().getLatitude(), profileOwner.getIndirizzo().getLongitude());
+            mMap.addMarker(new MarkerOptions().position(coordinate).title(profileOwner.getIndirizzo().getThoroughfare() + " " + profileOwner.getIndirizzo().getFeatureName()+" " + profileOwner.getIndirizzo().getLocality()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinate));
+        }else{
+            // Add a marker in Sydney and move the camera
+            LatLng sydney = new LatLng(-34, 151);
+            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+            mMapWindow.setVisibility(View.GONE);
+        }
+
     }
 }

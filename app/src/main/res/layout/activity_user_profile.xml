@@ -44,6 +44,7 @@ tools:context="com.example.lagun.play4me4.UserProfileActivity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_descrive"
+            android:id="@+id/modifica_image"
             android:background="@color/colorWhite"/>
         <Button
             android:id="@+id/modifica"
@@ -59,11 +60,17 @@ tools:context="com.example.lagun.play4me4.UserProfileActivity">
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorPrimaryDark"/>
-    <fragment
+
+    <LinearLayout
+        android:id="@+id/map_window"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment" />
+        android:layout_height="wrap_content">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
@@ -83,7 +90,7 @@ tools:context="com.example.lagun.play4me4.UserProfileActivity">
             android:contentDescription="@string/icona_login"
             android:src="@drawable/ic_directions" />
         <TextView
-            android:id="@+id/data"
+            android:id="@+id/place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
