@@ -8,10 +8,10 @@
     tools:context="com.example.lagun.play4me4.UserProfileModifierActivity">
 
     <LinearLayout
+        android:id="@+id/everything"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-
         >
 
         <RelativeLayout
@@ -23,68 +23,56 @@
                 android:id="@+id/image_user"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="21dp"
+                android:scaleType="centerCrop"
+                android:background="@color/colorGray"
                 android:contentDescription="@string/icona_login"
-                android:src="@drawable/ic_menu_camera" />
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/colorWhite"
+                android:layout_alignParentEnd="true">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:foregroundGravity="right"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_menu_camera" />
 
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="Modifica Foto"
+                                android:paddingTop="5dp"
+                                android:paddingStart="2dp"
+                                android:paddingEnd="5dp"
+                                android:textAlignment="textStart" />
+                </LinearLayout>
+            <Button
+                android:id="@+id/event_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/image_modifier_background"
-                android:src="@drawable/ic_change_image" />
+                android:layout_alignParentBottom="true"
+                android:text="Banda Tosta"
+                android:textAlignment="center"
+                android:background="@drawable/bottone_nome_evento_profilo"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_alignBottom="@id/image_user"
+                android:background="@color/colorPrimary" />
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/event_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="Banda Tosta"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorPrimaryDark" />
-
-        <LinearLayout
-            android:id="@+id/modificator"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageButton
-                android:id="@+id/modifica_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                android:src="@drawable/ic_descrive" />
-
-            <Button
-                android:id="@+id/modifica"
-                android:layout_width="match_parent"
-                android:layout_height="23dp"
-                android:background="@color/colorWhite"
-                android:text="Modifica"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="18sp" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorPrimaryDark" />
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -226,5 +214,29 @@
 
                 </android.support.design.widget.TextInputLayout>
         </LinearLayout>
+        <Button
+            android:id="@+id/accept_buton"
+            style="?android:textAppearanceMedium"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="0.07"
+            android:background="@color/colorPrimary"
+            android:text="Applica Modifiche"
+            android:textColor="@android:color/background_light"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include  layout="@layout/activity_image_gallery"
+                android:id="@+id/hiddengallery"
+                android:visibility="gone"/>
+        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+
+    </ScrollView>

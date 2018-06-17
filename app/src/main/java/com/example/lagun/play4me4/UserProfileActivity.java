@@ -1,6 +1,7 @@
 package com.example.lagun.play4me4;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -73,9 +74,28 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
         mNameUser.setText(profileOwner.getName());
 
         if(profileOwner.getMail().equals(utente.getMail())) {
-            mModificaLayout.setVisibility(View.GONE);
-        }else{
             mModificaLayout.setVisibility(View.VISIBLE);
+
+            mModificaButton.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(UserProfileActivity.this, UserProfileModifierActivity.class);
+                    i.putExtra("userMail", profileOwner.getMail());
+                    startActivity(i);
+                }
+            });
+            mModificaImageButton.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(UserProfileActivity.this, UserProfileModifierActivity.class);
+                    i.putExtra("userMail", profileOwner.getMail());
+                    startActivity(i);
+                }
+            });
+        }else{
+            mModificaLayout.setVisibility(View.GONE);
 
         }
 
@@ -95,60 +115,20 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
 
         if(profileOwner.getInfo()!=null && !profileOwner.getInfo().isEmpty()){
             mInfo.setText(profileOwner.getInfo());
+        }else
+            if(profileOwner.isClub()){
+            mInfo.setText("Gestore");
         }else{
-            mInfo.setText("-");
-        }
+                mInfo.setText("Band");
 
+            }
         if(profileOwner.getDescription()!=null && !profileOwner.getDescription().isEmpty()){
-            mDesctiption.setText(profileOwner.getInfo());
+            mDesctiption.setText(profileOwner.getDescription());
         }else{
             mDesctiption.setText("-");
         }
 
 
-        //File drawableFile = new     File(getApplicationContext().getFilesDir().getAbsolutePath()+"/ic_calendar.png");
-        /*imageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_calendar, null));
-        {
-            Bitmap bm = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.ic_calendar);
-            File dir = new File(Environment.getExternalStorageDirectory() + File.separator);
-            String filename = "myfile";
-            String fileContents = "Hello world!";
-            FileOutputStream outputStream;
-
-            try {
-                outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-                outputStream.write(fileContents.getBytes());
-                outputStream.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            boolean doSave = true;
-            if (!dir.exists()) {
-                doSave = dir.mkdirs();
-            }
-
-            if (doSave) {
-                dir.setWritable(true);
-                dir.setExecutable(true);
-                dir.setReadable(true);
-                //ObjectFactory.saveBitmapToFile(dir,"theNameYouWant.png",bm, Bitmap.CompressFormat.PNG,100);
-            }
-            else {
-                Log.e("app","Couldn't create target directory.");
-            }
-        }
-        try {
-            InputStream inputstr;
-            getFilesDir().listFiles();
-            inputstr=new FileInputStream(new File("src/main/res/drawable"));
-            Drawable drawable = Drawable.createFromStream(inputstr, "drawable");
-            imageView.setImageDrawable(drawable);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }*/
-
-        //ObjectFactory.initializeClub();
-        //imageView.setImageDrawable(Drawable.createFromPath("R//drawable//ic_calendar");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -173,6 +153,9 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
             LatLng coordinate = new LatLng(profileOwner.getIndirizzo().getLatitude(), profileOwner.getIndirizzo().getLongitude());
             mMap.addMarker(new MarkerOptions().position(coordinate).title(profileOwner.getIndirizzo().getThoroughfare() + " " + profileOwner.getIndirizzo().getFeatureName()+" " + profileOwner.getIndirizzo().getLocality()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinate));
+            float zoomLevel = 16.0f; //This goes up to 21
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, zoomLevel));
+            mMapWindow.setVisibility(View.VISIBLE);
         }else{
             // Add a marker in Sydney and move the camera
             LatLng sydney = new LatLng(-34, 151);

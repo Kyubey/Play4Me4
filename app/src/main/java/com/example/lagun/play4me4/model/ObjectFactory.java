@@ -1,23 +1,21 @@
 package com.example.lagun.play4me4.model;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
+import android.location.Address;
+import android.location.Geocoder;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.example.lagun.play4me4.R;
+import com.google.android.gms.maps.model.LatLng;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 public class ObjectFactory{
@@ -51,6 +49,7 @@ public class ObjectFactory{
             Paolo.setDescription("Ciao");
             Paolo.setInfo("Miliardario");
             Paolo.setPhoneNumber("2345566");
+            Paolo.setIndirizzoString("Via Dante 11 Cagliari");
             Paolo.setProPicture(res.getDrawable(R.drawable.locale_hard_rock));
             array.add(Paolo);
         }
@@ -66,11 +65,13 @@ public class ObjectFactory{
             Marco.setInfo("Rocker");
             Marco.setPhoneNumber("63474574");
             Marco.setProPicture(res.getDrawable(R.drawable.punk_band));
+            Marco.setIndirizzoString("Via Stampa 14 Cagliari");
             array.add(Marco);
 
             User Fabio=new User("Fabietto","f@","b",false);
             Fabio.setDescription("Yother");
             Fabio.setInfo("Your' mon");
+            Fabio.setIndirizzoString("Via Nazionale 22 Quartucciu");
             Fabio.setPhoneNumber("4324429");
             Fabio.setProPicture(res.getDrawable(R.drawable.jazz_band));
             array.add(Fabio);
@@ -90,7 +91,7 @@ public class ObjectFactory{
             totalEvents++;
 
             Event Panini=new Event("PANINII!", DateUtils.parseDateTime("04/06/2018 - 22:00"),club.get(0),"Che buoni");
-            Panini.setEventPicture(res.getDrawable(R.drawable.localeJazz));
+            Panini.setEventPicture(res.getDrawable(R.drawable.locale_jazz));
             Panini.setStringPlace("Via Cesare Serra 1 Quartucciu");
             Panini.proponiNuovo(band.get(0),1);
             Panini.proponiNuovo(band.get(1),1);
@@ -259,4 +260,5 @@ public class ObjectFactory{
             }});
         return lista;
     }
+
 }

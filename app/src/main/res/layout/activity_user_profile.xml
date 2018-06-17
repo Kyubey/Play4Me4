@@ -10,27 +10,43 @@ tools:context="com.example.lagun.play4me4.UserProfileActivity">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     >
-    <ImageView
-        android:id="@+id/image_user"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginBottom="5dp"
-        android:contentDescription="@string/icona_login"
-        android:src="@mipmap/ic_calendar" />
+
     <RelativeLayout
+        android:id="@+id/image_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/event_name"
+        <ImageView
+            android:id="@+id/image_user"
             android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="21dp"
+            android:scaleType="centerCrop"
+            android:background="@color/colorGray"
+            android:contentDescription="@string/icona_login"
+            />
+        <Button
+            android:id="@+id/event_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_toEndOf="@id/data_month"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
             android:text="Banda Tosta"
             android:textAlignment="center"
+            android:background="@drawable/bottone_nome_evento_profilo"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_alignBottom="@id/image_user"
+            android:background="@color/colorPrimary" />
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
