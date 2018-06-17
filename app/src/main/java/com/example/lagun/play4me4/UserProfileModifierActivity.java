@@ -49,6 +49,9 @@ public class UserProfileModifierActivity extends AppCompatActivity {
     private TextView mInfo;
     private TextView mDesctiption;
     private Button mApplyChanges;
+    private LinearLayout mAll;
+    private View mGallery;
+    private ImageView mGalleryImage;
 
 
     @Override
@@ -66,6 +69,8 @@ public class UserProfileModifierActivity extends AppCompatActivity {
         mInfo=findViewById(R.id.info);
         mDesctiption=findViewById(R.id.description);
         mApplyChanges=findViewById(R.id.accept_buton);
+        mAll=findViewById(R.id.everything);
+        mGallery=findViewById(R.id.hidden_gallery);
 
         mImageView.setImageDrawable(profileOwner.getProPicture());
         mNameUser.setText(profileOwner.getName());
@@ -101,6 +106,15 @@ public class UserProfileModifierActivity extends AppCompatActivity {
             mDesctiption.setText("");
         }
 
+
+        mImageView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                attemptInsertPic();
+            }
+        });
+//Trova l'indirizzo e le coordinate data la stringa
         mApplyChanges.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -150,6 +164,80 @@ public class UserProfileModifierActivity extends AppCompatActivity {
             }
         });;
 
+    }
+    protected void attemptInsertPic(){
+        mAll.setVisibility(View.GONE);
+        mGallery.setVisibility(View.VISIBLE);
+        findViewById(R.id.rock).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.rock);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto1);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto2);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto3);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto4);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto5);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto6);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        mGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //mGallery.setVisibility(View.GONE);
+                //mAll.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
 }

@@ -36,6 +36,7 @@ public class EventCreationActivity extends AppCompatActivity {
     private View mGallery;
     private View mAll;
     private User utente;
+    private ImageView mGalleryImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,7 +119,62 @@ public class EventCreationActivity extends AppCompatActivity {
         findViewById(R.id.rock).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mImageView.setImageResource(R.drawable.rock);
+                mGalleryImage=findViewById(R.id.rock);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto1);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto2);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto3);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto4).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto4);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto5);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
+                mGallery.setVisibility(View.GONE);
+                mAll.setVisibility(View.VISIBLE);
+            }
+        });
+        findViewById(R.id.foto6).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mGalleryImage=findViewById(R.id.foto6);
+                mImageView.setImageDrawable(mGalleryImage.getDrawable());
                 mGallery.setVisibility(View.GONE);
                 mAll.setVisibility(View.VISIBLE);
             }

@@ -34,7 +34,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/D:/Programmi/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_add_circle_outline_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/D:/Programmi/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_description_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -44,8 +44,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_change_image" />
-                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="outputName" value="ic_descriptionis" />
                                       <entry key="themeColor" value="000000" />
                                     </map>
                                   </option>

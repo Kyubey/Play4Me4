@@ -48,6 +48,7 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
     private TextView mPhone;
     private TextView mInfo;
     private TextView mDesctiption;
+    private RelativeLayout mOpenMap;
     private LinearLayout mMapWindow;
 
 
@@ -59,7 +60,7 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
         utente= ObjectFactory.getLoggedUser(getApplicationContext());
         profileOwner=ObjectFactory.getFromEmail(getIntent().getStringExtra("userMail"));
         Resources res= getResources();
-        ImageView imageView=(ImageView) findViewById(R.id.image_user);
+        final ImageView imageView=(ImageView) findViewById(R.id.image_user);
         mNameUser=findViewById(R.id.event_name);
         mModificaImageButton=findViewById(R.id.modifica_image);
         mModificaButton=findViewById(R.id.modifica);
@@ -68,6 +69,7 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
         mPhone=findViewById(R.id.telephone_number);
         mInfo=findViewById(R.id.info);
         mDesctiption=findViewById(R.id.description);
+        mOpenMap=findViewById(R.id.open_map);
         mMapWindow=findViewById(R.id.map_window);
 
         imageView.setImageDrawable(profileOwner.getProPicture());
@@ -127,6 +129,28 @@ public class UserProfileActivity extends FragmentActivity implements OnMapReadyC
         }else{
             mDesctiption.setText("-");
         }
+
+
+        if(profileOwner.getIndirizzo()==null){
+            mOpenMap.setVisibility(View.GONE);
+        }
+
+        mOpenMap.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                ImageView mArrow=findViewById(R.id.map_window_arrow);
+                Resources risorse=getResources();
+                if(mMapWindow.getVisibility()==View.GONE){
+                    mMapWindow.setVisibility(View.VISIBLE);
+                    mArrow.setImageDrawable(risorse.getDrawable(R.drawable.ic_close_window));
+                }
+                else{
+                    mMapWindow.setVisibility(View.GONE);
+                    mArrow.setImageDrawable(risorse.getDrawable(R.drawable.ic_open_window));
+                }
+            }
+        });
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.

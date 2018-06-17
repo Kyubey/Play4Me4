@@ -74,94 +74,156 @@ tools:context="com.example.lagun.play4me4.UserProfileActivity">
     </LinearLayout>
     <View
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="1dp"
         android:background="@color/colorPrimaryDark"/>
 
-    <LinearLayout
-        android:id="@+id/map_window"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <fragment
+
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/place_container"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal">
+                    <ImageView
+                        android:layout_marginTop="15dp"
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/image_place"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:contentDescription="@string/icona_login"
+                        android:src="@drawable/ic_directions" />
+                    <TextView
+                        android:id="@+id/place"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginTop="12dp"
+                        android:text="Via dei matti 0 Cagliari"
+                        android:textAlignment="textStart"
+                        android:textSize="18sp" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <RelativeLayout
+                        android:id="@+id/open_map"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/pulsante_window"
+                        android:paddingTop="13dp">
+
+                        <ImageView
+                            android:id="@+id/map_window_arrow"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/ic_open_window" />
+
+                    </RelativeLayout>
+                </RelativeLayout>
+                </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/map_window"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment" />
+            </LinearLayout>
+        </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp">
+            <ImageView
+                android:id="@+id/image_telephone"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="12dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:contentDescription="@string/icona_login"
+                android:src="@drawable/ic_phone" />
+            <TextView
+                android:id="@+id/telephone_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="5dp"
+                android:text="3496666666"
+                android:textAlignment="textStart"
+                android:textSize="18sp" />
+        </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:background="@android:color/darker_gray"/>
-    <RelativeLayout
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:orientation="horizontal"
+    android:layout_marginBottom="5dp">
+    <ImageView
+        android:id="@+id/image_info"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:contentDescription="@string/icona_login"
+        android:src="@drawable/ic_info" />
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="5dp"
+        android:text="Band Rock"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
+</LinearLayout>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
         <ImageView
+            android:id="@+id/image_description"
             android:layout_marginTop="15dp"
-            android:layout_marginStart="10dp"
-            android:id="@+id/image_place"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentStart="true"
-            android:contentDescription="@string/icona_login"
-            android:src="@drawable/ic_directions" />
-        <TextView
-            android:id="@+id/place"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="12dp"
-            android:layout_toEndOf="@id/image_place"
-            android:text="A casino in via dei matti numero 0"
-            android:textAlignment="textStart"
-            android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/image_telephone"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="12dp"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_alignParentStart="true"
             android:contentDescription="@string/icona_login"
-            android:layout_below="@id/image_place"
-            android:src="@drawable/ic_phone" />
-        <TextView
-            android:id="@+id/telephone_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="5dp"
-            android:layout_below="@id/image_place"
-            android:layout_toEndOf="@id/image_telephone"
-            android:text="3496666666"
-            android:textAlignment="textStart"
-            android:textSize="18sp" />
-
-        <ImageView
-            android:id="@+id/image_info"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="12dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_alignParentStart="true"
-            android:contentDescription="@string/icona_login"
-            android:layout_below="@id/image_telephone"
-            android:src="@drawable/ic_info" />
-        <TextView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="5dp"
-            android:layout_below="@id/image_telephone"
-            android:layout_toEndOf="@id/image_info"
-            android:text="Band Rock"
-            android:textAlignment="textStart"
-            android:textSize="18sp" />
+            android:src="@drawable/ic_descriptionis" />
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
@@ -169,12 +231,15 @@ tools:context="com.example.lagun.play4me4.UserProfileActivity">
             android:layout_marginTop="10dp"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="5dp"
-            android:layout_below="@id/image_info"
             android:text="Descrizione quzrantaqquattro gattin in fila per 3 col resto di 2"
             android:textAlignment="textStart"
-            android:textSize="18sp" />
+            android:textSize="18sp" /></LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray"/>
 
 
-    </RelativeLayout>
 </LinearLayout>
 </ScrollView>
