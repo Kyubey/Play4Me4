@@ -38,13 +38,6 @@ public class Notification extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Notifiche");
         utente=ObjectFactory.getLoggedUser(getApplicationContext());
-        ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
-        Button numberNote = findViewById(R.id.numberNote);
-        if(utente.numNotifiche()!=0) {
-            numberNote.setText(Integer.toString(utente.numNotifiche()));
-        }
-        else
-            numberNote.setVisibility(View.INVISIBLE);
 
         mAdapter = new NotificationAdapter(utente.getNuoveNotifiche(), utente.getVecchieNotifiche());
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.content_notification);

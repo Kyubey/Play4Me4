@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -7,10 +7,86 @@
     android:layout_height="match_parent"
     tools:context="com.example.lagun.play4me4.UserProfileModifierActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/title_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="Modifica Profilo"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
+                    android:textSize="22sp" />
+                <ImageView
+                    android:id="@+id/button_back"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+
+                    android:src="@drawable/ic_back"/>
+                <ImageView
+                    android:id="@+id/button_home"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_toEndOf="@+id/button_back"
+                    android:src="@drawable/ic_home"/>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="16dp">
+                    <ImageView
+                        android:id="@+id/noticeMe"
+                        android:layout_width="33dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_bell"
+                        android:tint="@color/colorWhite"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="5dp"/>
+                    <Button
+                        android:id="@+id/numberNote"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:visibility="invisible"
+                        android:layout_alignBottom="@id/noticeMe"
+                        android:layout_marginStart="17dp"
+                        android:background="@drawable/round_button"
+                        android:text="0"
+                        android:textSize="15sp"/>
+                </RelativeLayout>
+            </RelativeLayout>
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
     <LinearLayout
         android:id="@+id/everything"
         android:layout_width="match_parent"
@@ -238,5 +314,5 @@
                 layout="@layout/activity_image_gallery"
                 android:visibility="gone"/>
         </LinearLayout>
-
-    </ScrollView>
+</ScrollView>
+    </LinearLayout>

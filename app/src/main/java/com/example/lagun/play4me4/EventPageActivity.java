@@ -55,6 +55,21 @@ public class EventPageActivity extends AppCompatActivity {
         mOwner= findViewById(R.id.event_owner);
         mBands= findViewById(R.id.bands_partecipanti);
         mGestioneBands= findViewById(R.id.gestione_bands);
+        ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
+        imageTool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(EventPageActivity.this, Notification.class);
+                startActivity(i);
+            }
+        });
+        Button numberNote = findViewById(R.id.numberNote);
+        if(ObjectFactory.getLoggedUser(this).numNotifiche()!=0) {
+            numberNote.setVisibility(View.VISIBLE);
+            numberNote.setText(Integer.toString(ObjectFactory.getLoggedUser(this).numNotifiche()));
+        }
+        else
+            numberNote.setVisibility(View.INVISIBLE);
 
 
         mImage.setImageDrawable(evento.getEventPicture());

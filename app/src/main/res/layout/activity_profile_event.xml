@@ -5,6 +5,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.lagun.play4me4.EventPageActivity">
+
 <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -88,6 +89,7 @@
                 android:layout_toEndOf="@id/who_is_owner"
                 android:text="Padrone FestaFesta"
                 android:textAlignment="textStart"
+                android:textColor="@color/colorPrimary"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="18sp" />
 
@@ -157,7 +159,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@color/colorGray"/>
+            android:background="@color/colorWhite"/>
 
         <TextView
             android:id="@+id/bands"

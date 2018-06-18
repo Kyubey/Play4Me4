@@ -70,6 +70,25 @@ public class GestioneAccettateAdapter extends RecyclerView.Adapter<GestioneAccet
         // - replace the contents of the view with that element
         holder.mImage.setImageDrawable(mDataset.get(position).getProPicture());
         holder.mName.setText(mDataset.get(position).getName());
+
+
+        holder.mImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(view.getContext(),UserProfileActivity.class);
+                i.putExtra("userMail",mDataset.get(position).getMail());
+                view.getContext().startActivity(i);
+            }
+        });
+        holder.mName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(view.getContext(),UserProfileActivity.class);
+                i.putExtra("userMail",mDataset.get(position).getMail());
+                view.getContext().startActivity(i);
+            }
+        });
+
         holder.mLicenzia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

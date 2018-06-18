@@ -50,6 +50,21 @@ public class EventCreationActivity extends AppCompatActivity {
         mAll=findViewById(R.id.creationVisible);
         mGallery.setVisibility(View.GONE);
         utente=ObjectFactory.getLoggedUser(getApplicationContext());
+        ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
+        imageTool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(EventCreationActivity.this, Notification.class);
+                startActivity(i);
+            }
+        });
+        Button numberNote = findViewById(R.id.numberNote);
+        if(utente.numNotifiche()!=0) {
+            numberNote.setVisibility(View.VISIBLE);
+            numberNote.setText(Integer.toString(ObjectFactory.getLoggedUser(this).numNotifiche()));
+        }
+        else
+            numberNote.setVisibility(View.INVISIBLE);
 
         mImageView=(ImageView) findViewById(R.id.image_event);
         Button mCreation = (Button) findViewById(R.id.event_accept_buton);

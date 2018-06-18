@@ -38,7 +38,7 @@
     <string name="tab_text_gb1">Accettate</string>
     <string name="tab_text_gb2">Proposte</string>
     <string name="tab_text_bh1">Ingaggi</string>
-    <string name="tab_text_bh2">Disponibili</string>
+    <string name="tab_text_bh2">Proposte</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_bands_home">BandsHome</string>

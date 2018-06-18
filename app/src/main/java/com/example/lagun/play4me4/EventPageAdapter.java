@@ -57,6 +57,15 @@ public class EventPageAdapter extends RecyclerView.Adapter<EventPageAdapter.View
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mImage.setImageDrawable(mDataset.get(position).getProPicture());
+
+        holder.mImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(view.getContext(),UserProfileActivity.class);
+                i.putExtra("userMail",mDataset.get(position).getMail());
+                view.getContext().startActivity(i);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

@@ -24,25 +24,33 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="right">
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/title_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Notifiche"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
+                android:textSize="24sp" />
             <ImageView
-                android:id="@+id/noticeMe"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_info"
-                android:layout_gravity="right"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="5dp"/>
-            <Button
-                android:id="@+id/numberNote"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignBottom="@id/noticeMe"
-                android:layout_alignEnd="@id/noticeMe"
-                android:background="@drawable/round_button"
-                android:text="0"
-                android:textSize="20sp"/>
+                android:id="@+id/button_back"
+                android:layout_width="28dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+
+                android:src="@drawable/ic_back"/>
+            <ImageView
+                android:id="@+id/button_home"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="25dp"
+                android:layout_toEndOf="@+id/button_back"
+                android:src="@drawable/ic_home"/>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 

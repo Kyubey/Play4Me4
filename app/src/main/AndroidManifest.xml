@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name">
+            android:label="Play4Me">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,9 +37,9 @@
             android:label="@string/title_activity_gestione_bands"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BandsHome"
+            android:name=".BandsHome2"
             android:label="@string/title_activity_bands_home"
-            android:theme="@style/AppBaseTheme" />
+            android:theme="@style/AppTheme.NoActionBar"/>/>
         <activity
             android:name=".Notification"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -61,16 +61,25 @@
 
         <activity
             android:name=".UserProfileActivity"
-            android:label="@string/title_activity_user_profile" />
+            android:label="@string/title_activity_user_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AgendaActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".ClubHomeActivity"
-            android:theme="@style/AppBaseTheme" />
-        <activity android:name=".EventCreationActivity" />
-        <activity android:name=".ImageGalleryActivity" />
-        <activity android:name=".EventPageActivity" />
-        <activity android:name=".EventPageActivityBand" />
+            android:theme="@style/AppTheme.NoActionBar"/> />
+        <activity android:name=".EventCreationActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ImageGalleryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EventPageActivity"
+            android:label="Pagina Evento"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EventPageActivityBand"
+            android:label="Pagina Evento"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".DrawClub"
             android:label="@string/title_activity_draw_club"
@@ -79,7 +88,9 @@
             android:name=".DrawBands"
             android:label="@string/title_activity_draw_bands"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UserProfileModifierActivity"></activity>
+
+        <activity android:name=".UserProfileModifierActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

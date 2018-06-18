@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lagun.play4me4.model.ObjectFactory;
@@ -33,7 +34,7 @@ public class DrawClub extends AppCompatActivity
     private ViewPager mViewPager;
     private TextView mNameHeader;
     private TextView mMailHeader;
-    private ImageView mPicHeader;
+    private LinearLayout mPicHeader;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,10 +69,10 @@ public class DrawClub extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         View hView =  navigationView.getHeaderView(0);
-        mPicHeader=(ImageView) hView.findViewById(R.id.nav_header_pic);
+        mPicHeader=(LinearLayout) hView.findViewById(R.id.nav_header_pic);
         mMailHeader=(TextView) hView.findViewById(R.id.nav_header_mail);
         mNameHeader=(TextView) hView.findViewById(R.id.nav_header_name);
-        mPicHeader.setImageDrawable(utente.getProPicture());
+        mPicHeader.setBackground(utente.getProPicture());
         mMailHeader.setText(utente.getMail());
         mNameHeader.setText(utente.getName());
 

@@ -15,21 +15,81 @@
         android:paddingTop="@dimen/appbar_padding_top"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/app_name">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary">
 
-        </android.support.v7.widget.Toolbar>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/title_page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="Gestione Bands"
+                        android:textColor="@color/colorWhite"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
+                        android:textSize="22sp" />
+                    <ImageView
+                        android:id="@+id/button_back"
+                        android:layout_width="26dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+
+                        android:src="@drawable/ic_back"/>
+                    <ImageView
+                        android:id="@+id/button_home"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@+id/button_back"
+                        android:src="@drawable/ic_home"/>
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="4dp">
+                        <ImageView
+                            android:id="@+id/noticeMe"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_bell"
+                            android:tint="@color/colorWhite"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginTop="5dp"/>
+                        <Button
+                            android:id="@+id/numberNote"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_alignBottom="@id/noticeMe"
+                            android:layout_marginStart="17dp"
+                            android:visibility="invisible"
+                            android:background="@drawable/round_button"
+                            android:text="0"
+                            android:textSize="18sp"/>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </android.support.v7.widget.Toolbar>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryLight"/>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
+            app:tabTextColor="@android:color/black"
+            app:tabSelectedTextColor="@color/colorWhite"
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TabItem
@@ -37,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_text_gb1" />
+
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"

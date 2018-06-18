@@ -84,6 +84,15 @@ public class BandsHomeTab1IngaggiAdapter extends RecyclerView.Adapter<BandsHomeT
                 view.getContext().startActivity(i);
             }
         });
+
+        holder.mOrganizer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(view.getContext(),UserProfileActivity.class);
+                i.putExtra("userMail",mDataset.get(position).getValue().getOwner().getMail());
+                view.getContext().startActivity(i);
+            }
+        });
     }
 
     // Return the size of your dataset (invoked by the layout manager)

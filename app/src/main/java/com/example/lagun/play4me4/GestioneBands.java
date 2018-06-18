@@ -2,6 +2,7 @@ package com.example.lagun.play4me4;
 
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,6 +20,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lagun.play4me4.model.ObjectFactory;
@@ -55,6 +58,22 @@ public class GestioneBands extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setOffscreenPageLimit(0);
+
+        ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
+        imageTool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(GestioneBands.this, Notification.class);
+                startActivity(i);
+            }
+        });
+        Button numberNote = findViewById(R.id.numberNote);
+        if(ObjectFactory.getLoggedUser(this).numNotifiche()!=0) {
+            numberNote.setVisibility(View.VISIBLE);
+            numberNote.setText(Integer.toString(ObjectFactory.getLoggedUser(this).numNotifiche()));
+        }
+        else
+            numberNote.setVisibility(View.INVISIBLE);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 

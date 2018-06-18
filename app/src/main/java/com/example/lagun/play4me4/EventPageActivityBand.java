@@ -74,6 +74,15 @@ public class EventPageActivityBand extends AppCompatActivity {
         mDescrizione.setText(evento.getDescription());
         mOwner.setText(evento.getOwner().getName());
 
+        mOwner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(EventPageActivityBand.this,UserProfileActivity.class);
+                i.putExtra("userMail",evento.getOwner().getMail());
+                view.getContext().startActivity(i);
+            }
+        });
+
 
         RecyclerView.Adapter adapter = new EventPageAdapter(evento.getAccettati());
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.bands_partecipanti);

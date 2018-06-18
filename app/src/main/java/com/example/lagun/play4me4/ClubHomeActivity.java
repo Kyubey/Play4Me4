@@ -40,6 +40,7 @@ public class ClubHomeActivity extends AppCompatActivity{
         });
         Button numberNote = findViewById(R.id.numberNote);
         if(utente.numNotifiche()!=0) {
+            numberNote.setVisibility(View.VISIBLE);
             numberNote.setText(Integer.toString(utente.numNotifiche()));
         }
         else

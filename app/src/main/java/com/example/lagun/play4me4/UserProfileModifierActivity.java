@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -59,6 +60,9 @@ public class UserProfileModifierActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //Crasha qui
         setContentView(R.layout.activity_user_profile_modifier);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Modifica Profilo");
         utente= ObjectFactory.getLoggedUser(getApplicationContext());
         profileOwner=ObjectFactory.getFromEmail(getIntent().getStringExtra("userMail"));
         Resources res= getResources();
@@ -74,6 +78,23 @@ public class UserProfileModifierActivity extends AppCompatActivity {
 
         mImageView.setImageDrawable(profileOwner.getProPicture());
         mNameUser.setText(profileOwner.getName());
+
+
+        ImageView imageTool = (ImageView) findViewById(R.id.noticeMe);
+        imageTool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(UserProfileModifierActivity.this, Notification.class);
+                startActivity(i);
+            }
+        });
+        Button numberNote = findViewById(R.id.numberNote);
+        if(ObjectFactory.getLoggedUser(this).numNotifiche()!=0) {
+            numberNote.setVisibility(View.VISIBLE);
+            numberNote.setText(Integer.toString(ObjectFactory.getLoggedUser(this).numNotifiche()));
+        }
+        else
+            numberNote.setVisibility(View.INVISIBLE);
 
 
         if(profileOwner.getIndirizzo()!=null) {
