@@ -27,10 +27,13 @@ public class EventPageAdapter extends RecyclerView.Adapter<EventPageAdapter.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public ImageView mImage;
+        public TextView mName;
 
         public ViewHolder(View v) {
             super(v);
             mImage=v.findViewById(R.id.bands_part);
+            mName=v.findViewById(R.id.name_bands_part);
+
         }
     }
 
@@ -57,6 +60,7 @@ public class EventPageAdapter extends RecyclerView.Adapter<EventPageAdapter.View
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.mImage.setImageDrawable(mDataset.get(position).getProPicture());
+        holder.mName.setText(mDataset.get(position).getName());
 
         holder.mImage.setOnClickListener(new View.OnClickListener() {
             @Override

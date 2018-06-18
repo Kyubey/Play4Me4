@@ -2,8 +2,25 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
     android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:orientation="vertical">
 <ImageView
-    android:layout_width="40dp"
-    android:layout_height="40dp"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_centerHorizontal="true"
+    android:scaleType="centerCrop"
+    android:src="@drawable/rock"
+    android:paddingBottom="10dp"
     android:id="@+id/bands_part"/>
+    <TextView
+        android:id="@+id/name_bands_part"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/my_button_bg"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:textColor="@android:color/black"
+        android:text="Nome Band"/></RelativeLayout>
 </android.support.constraint.ConstraintLayout>

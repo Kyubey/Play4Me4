@@ -280,7 +280,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:text="Bands"
+            android:text="Bands Partecipanti"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/background_light"
             android:textAlignment="center"
@@ -288,6 +288,7 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:minHeight="65dp"
             android:layout_marginStart="11dp"
             android:layout_marginEnd="11dp"

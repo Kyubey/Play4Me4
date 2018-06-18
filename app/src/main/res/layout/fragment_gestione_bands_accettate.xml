@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
+    android:background="@color/colorGray"
     android:layout_height="wrap_content"
+    android:padding="2dp"
     tools:context=".GestioneBands$PlaceholderFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
         <ImageView
             android:id="@+id/image_band"
             android:layout_width="@dimen/size_image_resume"
@@ -25,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:layout_centerVertical="true"
             android:layout_marginStart="15dp"
             android:layout_toEndOf="@id/image_band"
             android:fontFamily="sans-serif"
@@ -39,7 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:layout_marginEnd="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30dp"
             android:gravity="end"
             android:layout_toEndOf="@id/name_band">
             <Button
